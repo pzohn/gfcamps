@@ -18,4 +18,11 @@ class  Campactivity extends Model {
             return $campactivity;
         }
     }
+
+    public static function GetCampactivitiesByTypeId($typeid) {
+        $campactivity = Campactivity::get("type_id", $typeid)->get();
+        if ($campactivity) {
+            return $campactivity;
+        }
+    }
 }

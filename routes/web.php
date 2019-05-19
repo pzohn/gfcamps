@@ -19,3 +19,5 @@ Route::post('/getCity', 'PayController@getCity');
 
 Route::post('/getCampactivities', 'CampactivityController@getCampactivities');
 
+Route::post('/getCampactivitiesByLittleType', 'CampactivityController@getCampactivitiesByLittleType');
+
