@@ -20,7 +20,7 @@ class  Campactivity extends Model {
     }
 
     public static function GetCampactivitiesByTypeId($typeid) {
-        $campactivity = Campactivity::get("type_id", $typeid)->get();
+        $campactivity = Campactivity::where("type_id", $typeid)->get();
         if ($campactivity) {
             return $campactivity;
         }
