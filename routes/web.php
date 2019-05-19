@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::post('/getCity', 'PayController@getCity');
 
+Route::post('/getCampactivities', 'CampactivityController@getCampactivities');
+
