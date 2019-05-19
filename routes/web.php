@@ -21,3 +21,5 @@ Route::post('/getCampactivities', 'CampactivityController@getCampactivities');
 
 Route::post('/getCampactivitiesByLittleType', 'CampactivityController@getCampactivitiesByLittleType');
 
+Route::post('/getShowsByType', 'CampactivityController@getShowsByType');
+
