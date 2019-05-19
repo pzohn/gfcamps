@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "welcome to gfc!";
 });
+
+Route::post('/getCity', 'PayController@getCity');
+
