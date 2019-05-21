@@ -121,10 +121,11 @@ class CampactivityController extends Controller
             $arry = preg_split("/@/",$schedule_ids);
             $schedules = [];
             foreach ($arry as $v) {
+                $schedule = Schedule::GetSchedule($v);
                 $urls[] = [
-                    "title" => $v->title,
-                    "desc" => $v->desc,
-                    "pics" => $this->getUrls($v->pic_ids)
+                    "title" => $schedule->title,
+                    "desc" => $schedule->desc,
+                    "pics" => $this->getUrls($schedule->pic_ids)
                 ];
             }
             return $urls;
