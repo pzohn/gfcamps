@@ -9,7 +9,7 @@ use App\Models\Show;
 use App\Models\Bigtype;
 use App\Models\Littletype;
 use App\Models\Schedule;
-use App\Models\Activitydt;
+use App\Models\Campdt;
 
 class CampactivityController extends Controller
 {
@@ -136,22 +136,22 @@ class CampactivityController extends Controller
     protected function getActivityTimes($time_ids) {
         $pos = strpos($time_ids, '@');
         if ($pos == false){
-            $activityTime = Activitydt::GetActivityTime($time_ids);
+            $activityTime = Campdt::GetActivityTime($time_ids);
             if ($activityTime){
-                $uactivityTimes[] = [
+                $activityTimes[] = [
                     $activityTime 
                 ];
-                return $uactivityTimes;
+                return $activityTimes;
             }
         }else{
             $arry = preg_split("/@/",$time_ids);
             $uactivityTimes = [];
             foreach ($arry as $v) {
-                $uactivityTimes[] = [
-                    Activitydt::GetActivityTime($v)
+                $activityTimes[] = [
+                    Campdt::GetActivityTime($v)
                 ];
             }
-            return $urls;
+            return $activityTimes;
         }
     }
 }
