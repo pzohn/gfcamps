@@ -9,6 +9,6 @@ class  Campdt extends Model {
 
     public static function GetActivityTime($id) {
         $campdt = Campdt::where("id", $id)->first();
-        return $campdt->desc;
+        return $campdt->id;
     }
 }
