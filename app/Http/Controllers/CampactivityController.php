@@ -175,7 +175,7 @@ class CampactivityController extends Controller
                 return $specials;
             }
         }else{
-            $arry = preg_split("/@/",$schedule_ids);
+            $arry = preg_split("/@/",$special_ids);
             $specials = [];
             foreach ($arry as $v) {
                 $special = Special::GetSpecial($v);
