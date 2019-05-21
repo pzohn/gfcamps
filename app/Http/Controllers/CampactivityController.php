@@ -8,7 +8,7 @@ use App\Models\Image;
 use App\Models\Show;
 use App\Models\Bigtype;
 use App\Models\Littletype;
-use App\Models\schedule;
+use App\Models\Schedule;
 
 class CampactivityController extends Controller
 {
