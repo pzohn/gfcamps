@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Show;
 use App\Models\Bigtype;
 use App\Models\Littletype;
+use App\Models\schedule;
 
 class CampactivityController extends Controller
 {
@@ -30,8 +31,10 @@ class CampactivityController extends Controller
         $activity = Campactivity::GetCampactivityById($id);
         $bigId = Littletype::GetBigId($activity->type_id);
         return [
-            "swiper_pic_ids" => $this->getUrls($activity->swiper_pic_ids),
-            "campdesc" => Bigtype::GetContent($bigId)
+            "swiper_pics" => $this->getUrls($activity->swiper_pic_ids),
+            "campdesc" => Bigtype::GetContent($bigId),
+            "present_pics" => $this->getUrls($activity->present_pic_ids),
+            "schedule_ids" => $this->getUrls($activity->schedule_ids)
         ];
         $campactivitiesTmp = [];
         foreach ($campactivities as $k => $v) {
@@ -94,6 +97,34 @@ class CampactivityController extends Controller
             foreach ($arry as $v) {
                 $urls[] = [
                     Image::GetImageUrl($v)
+                ];
+            }
+            return $urls;
+        }
+    }
+
+    protected function getSchedule($schedule_ids) {
+        $pos = strpos($schedule_ids, '@');
+        if ($pos == false){
+            $schedule = Schedule::GetSchedule($url_ids);
+            if ($schedule){
+                $schedules[] = [
+                    [
+                        "title" => $schedule->title,
+                        "desc" => $schedule->desc,
+                        "pics" => $this->getUrls($schedule->pic_ids)
+                    ]
+                ];
+                return $urls;
+            }
+        }else{
+            $arry = preg_split("/@/",$schedule_ids);
+            $schedules = [];
+            foreach ($arry as $v) {
+                $urls[] = [
+                    "title" => $v->title,
+                    "desc" => $v->desc,
+                    "pics" => $this->getUrls($v->pic_ids)
                 ];
             }
             return $urls;
