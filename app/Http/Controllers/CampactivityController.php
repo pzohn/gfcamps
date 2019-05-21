@@ -89,7 +89,7 @@ class CampactivityController extends Controller
                 return $urls;
             }
         }else{
-            $arry = preg_split("/@/",$leasing_ids);
+            $arry = preg_split("/@/",$url_ids);
             $urls = [];
             foreach ($arry as $v) {
                 $urls[] = [
