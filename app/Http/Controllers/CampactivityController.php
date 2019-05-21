@@ -46,7 +46,8 @@ class CampactivityController extends Controller
             "traffic" => $activity->traffic,
             "safe" => $activity->safe,
             "other" => $activity->other,
-            "desc" =>$activity->desc
+            "desc" =>$activity->desc,
+            "charge_info"  =>$activity->charge_info
         ];
     }
 
