@@ -10,6 +10,7 @@ use App\Models\Bigtype;
 use App\Models\Littletype;
 use App\Models\Schedule;
 use App\Models\Campdt;
+use App\Models\Special;
 
 class CampactivityController extends Controller
 {
@@ -48,7 +49,8 @@ class CampactivityController extends Controller
             "other" => $activity->other,
             "desc" =>$activity->desc,
             "charge_info" =>$activity->charge_info,
-            "stay" =>$activity->stay
+            "stay" =>$activity->stay,
+            "special" => $this->getSpecial($activity->special_ids)
         ];
     }
 
@@ -155,6 +157,35 @@ class CampactivityController extends Controller
                 ];
             }
             return $activityTimes;
+        }
+    }
+
+    protected function getSpecial($special_ids) {
+        $pos = strpos($special_ids, '@');
+        if ($pos == false){
+            $special = Schedule::GetSchedule($special_ids);
+            if ($special){
+                $specials[] = [
+                    [
+                        "title" => $special->title,
+                        "content" => $special->content,
+                        "pics" => $this->getUrls($special->pic_ids)
+                    ]
+                ];
+                return $specials;
+            }
+        }else{
+            $arry = preg_split("/@/",$schedule_ids);
+            $specials = [];
+            foreach ($arry as $v) {
+                $special = Special::GetSpecial($v);
+                $specials[] = [
+                    "title" => $special->title,
+                    "content" => $special->content,
+                    "pics" => $this->getUrls($special->pic_ids)
+                ];
+            }
+            return $specials;
         }
     }
 }
