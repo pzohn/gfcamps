@@ -136,7 +136,7 @@ class CampactivityController extends Controller
     protected function getActivityTimes($time_ids) {
         $pos = strpos($time_ids, '@');
         if ($pos == false){
-            $activityTime = Activitytime::GetImageUrl($time_ids);
+            $activityTime = Activitytime::GetActivityTime($time_ids);
             if ($activityTime){
                 $uactivityTimes[] = [
                     $activityTime 
