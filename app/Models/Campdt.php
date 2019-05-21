@@ -10,7 +10,8 @@ class  Campdt extends Model {
 
     public static function GetActivityTime($id) {
         $campdt = Campdt::where("id", $id)->first();
-        \Log::debug("----------", [$campdt]);
-        return $campdt->desc;
+        if ($campdt){
+            return $campdt->desc;
+        }
     }
 }
