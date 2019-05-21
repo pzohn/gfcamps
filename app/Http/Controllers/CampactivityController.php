@@ -34,7 +34,7 @@ class CampactivityController extends Controller
             "swiper_pics" => $this->getUrls($activity->swiper_pic_ids),
             "campdesc" => Bigtype::GetContent($bigId),
             "present_pics" => $this->getUrls($activity->present_pic_ids),
-            "schedule_ids" => $this->getUrls($activity->schedule_ids)
+            "schedule_ids" => $this->getSchedule($activity->schedule_ids)
         ];
         $campactivitiesTmp = [];
         foreach ($campactivities as $k => $v) {
