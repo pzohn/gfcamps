@@ -5,10 +5,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class  Campdt extends Model {
         
+    protected $table = "campdts";
     public $timestamps = false;
 
     public static function GetActivityTime($id) {
         $campdt = Campdt::where("id", $id)->first();
-        return $campdt->id;
+        return $campdt->desc;
     }
 }
