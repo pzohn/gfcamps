@@ -22,12 +22,11 @@ class MessageController extends Controller
                 Member::memberInsert($params);
             }
             $content = $req->get('info_message');
-            if (!$content){
+            if ($content){
                 $params = [
                     "phone" => $phone,
                     "content" => $content
                 ];
-                return $content;
                 Message::messageInsert($params);
             }
         }
