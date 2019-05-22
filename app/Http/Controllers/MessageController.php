@@ -22,6 +22,7 @@ class MessageController extends Controller
                 Member::memberInsert($params);
             }
             $content = $req->get('info_message');
+            return $content;
             if (!$content){
                 $params = [
                     "phone" => $phone,
