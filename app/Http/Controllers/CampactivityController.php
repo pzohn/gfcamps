@@ -28,13 +28,28 @@ class CampactivityController extends Controller
         return  $campactivitiesTmp;
     }
 
+    public function getCampactivitiesByCounty(Request $req) {
+        $county_id = $req('country_id');
+        $campactivities = Campactivity::GetCampactivityByCounty($county_id);
+        $campactivitiesTmp = [];
+        foreach ($campactivities as $k => $v) {
+            $campactivitiesTmp[] = [
+            "id" => $v->id,
+            "name" => $v->name,
+	        "title_pic" => Image::GetImage($v->title_pic_id)->url,
+	        "file" => Image::GetImage($v->title_pic_id)->file
+            ];
+        }
+        return  $campactivitiesTmp;
+    }
+
     public function getCampactivityById(Request $req) {
         $id = $req->get('id');
         $activity = Campactivity::GetCampactivityById($id);
         $bigId = Littletype::GetBigId($activity->type_id);
         return [
             "swiper_pics" => $this->getUrls($activity->swiper_pic_ids),
-            "campdesc" => Bigtype::GetContent($bigId),
+            "campdesc" => $activity->prologue,
             "present_pics" => $this->getUrls($activity->present_pic_ids),
             "schedule_ids" => $this->getSchedule($activity->schedule_ids),
             "activitytimes" => $this->getActivityTimes($activity->time_ids),

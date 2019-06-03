@@ -25,4 +25,18 @@ class  Campactivity extends Model {
             return $campactivity;
         }
     }
+
+    public static function GetCampactivityByCamp($camp_id) {
+        $campactivity = Campactivity::where("camp_id", $camp_id)->get();
+        if ($campactivity) {
+            return $campactivity;
+        }
+    }
+
+    public static function GetCampactivityByCounty($county_id) {
+        $campactivity = Campactivity::where("country_id", $county_id)->get();
+        if ($campactivity) {
+            return $campactivity;
+        }
+    }
 }
