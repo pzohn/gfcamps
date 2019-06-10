@@ -49,7 +49,7 @@ class CampactivityController extends Controller
         $activity = Campactivity::GetCampactivityById($id);
         $bigId = Littletype::GetBigId($activity->type_id);
         return [
-            "swiper_pics" => $this->getUrls($activity->swiper_pic_ids),
+            "swiper_pics" => $this->getCarousels($activity->type_id),
             "campdesc" => $activity->prologue,
             "present_pics" => $this->getUrls($activity->present_pic_ids),
             "schedule_ids" => $this->getSchedule($activity->schedule_ids),
@@ -205,9 +205,14 @@ class CampactivityController extends Controller
         }
     }
 
-    protected function getCarousels(Request $req) {
-        $typeid = $req->get('id');
+    protected function getCarousels($typeid) {
         $carousels = Carousel::GetCarousels($typeid);
-        return $carousels;
+        $urls = [];
+        foreach ($carousels as $v) {
+            $urls[] = [
+                "lunbo/" . $v->url
+            ];
+        }
+        return $urls;
     }
 }
