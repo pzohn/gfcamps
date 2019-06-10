@@ -29,3 +29,5 @@ Route::post('/GetCampactivityByCounty', 'CampactivityController@GetCampactivityB
 
 Route::post('/saveMessage', 'MessageController@saveMessage');
 
+Route::post('/getCarousels', 'CampactivityController@getCarousels');
+

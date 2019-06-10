@@ -11,6 +11,7 @@ use App\Models\Littletype;
 use App\Models\Schedule;
 use App\Models\Campdt;
 use App\Models\Special;
+use App\Models\Carousel;
 
 class CampactivityController extends Controller
 {
@@ -202,5 +203,11 @@ class CampactivityController extends Controller
             }
             return $specials;
         }
+    }
+
+    protected function getCarousels(Request $req) {
+        $typeid = $req->get('id');
+        $carousels = Carousel::GetCarousels($typeid);
+        return $carousels;
     }
 }
