@@ -8,7 +8,7 @@ class  Carousel extends Model {
     public $timestamps = false;
 
     public static function GetCarousels($typeid) {
-        $carousels = \DB::select('SELECT * FROM carousels WHERE type=$typeid ORDER BY RAND() LIMIT 3');
+        $carousels = \DB::select('SELECT * FROM carousels WHERE type=? ORDER BY RAND() LIMIT 3',[$typeid]);
         if($carousels){
             return $carousels;
         }
