@@ -131,11 +131,9 @@ class CampactivityController extends Controller
             $schedule = Schedule::GetSchedule($url_ids);
             if ($schedule){
                 $schedules[] = [
-                    [
                         "title" => $schedule->title,
                         "desc" => $schedule->desc,
                         "pics" => $this->getUrls($schedule->pic_ids)
-                    ]
                 ];
                 return $urls;
             }
