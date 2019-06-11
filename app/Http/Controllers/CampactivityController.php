@@ -185,7 +185,7 @@ class CampactivityController extends Controller
                         "title" => $special->title,
                         "content" => $special->content,
                         "pics" => $this->getUrls($special->pic_ids),
-                        "id" => $special->id
+                        "id" => $special_ids
                     ];
                 return $specials;
             }
