@@ -179,7 +179,7 @@ class CampactivityController extends Controller
     protected function getSpecial($special_ids) {
         $pos = strpos($special_ids, '@');
         if ($pos == false){
-            $special = Schedule::GetSchedule((int)$special_ids);
+            $special = Special::GetSpecial($special_ids);
             if ($special){
                 $specials[] = [
                         "title" => $special->title,
