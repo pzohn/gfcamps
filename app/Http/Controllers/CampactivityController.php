@@ -128,7 +128,7 @@ class CampactivityController extends Controller
     protected function getSchedule($schedule_ids) {
         $pos = strpos($schedule_ids, '@');
         if ($pos == false){
-            $schedule = Schedule::GetSchedule($url_ids);
+            $schedule = Schedule::GetSchedule($schedule_ids);
             if ($schedule){
                 $schedules[] = [
                         "title" => $schedule->title,
