@@ -135,7 +135,7 @@ class CampactivityController extends Controller
                         "desc" => $schedule->desc,
                         "pics" => $this->getUrls($schedule->pic_ids)
                 ];
-                return $urls;
+                return $schedules;
             }
         }else{
             $arry = preg_split("/@/",$schedule_ids);
