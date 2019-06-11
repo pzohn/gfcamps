@@ -210,7 +210,7 @@ class CampactivityController extends Controller
         $urls = [];
         foreach ($carousels as $v) {
             $urls[] = [
-                "lunbo/" . $v->url
+                "lunbo/" . $v->url . ".jpg"
             ];
         }
         return $urls;
