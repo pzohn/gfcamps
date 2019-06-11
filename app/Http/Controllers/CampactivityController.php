@@ -185,7 +185,8 @@ class CampactivityController extends Controller
                     [
                         "title" => $special->title,
                         "content" => $special->content,
-                        "pics" => $this->getUrls($special->pic_ids)
+                        "pics" => $this->getUrls($special->pic_ids),
+                        "id" => $special->id
                     ]
                 ];
                 return $specials;
@@ -198,7 +199,8 @@ class CampactivityController extends Controller
                 $specials[] = [
                     "title" => $special->title,
                     "content" => $special->content,
-                    "pics" => $this->getUrls($special->pic_ids)
+                    "pics" => $this->getUrls($special->pic_ids),
+                    "id" => $special->id
                 ];
             }
             return $specials;
