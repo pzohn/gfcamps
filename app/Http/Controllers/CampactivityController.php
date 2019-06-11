@@ -182,13 +182,11 @@ class CampactivityController extends Controller
             $special = Schedule::GetSchedule($special_ids);
             if ($special){
                 $specials[] = [
-                    [
                         "title" => $special->title,
                         "content" => $special->content,
                         "pics" => $this->getUrls($special->pic_ids),
                         "id" => $special->id
-                    ]
-                ];
+                    ];
                 return $specials;
             }
         }else{
