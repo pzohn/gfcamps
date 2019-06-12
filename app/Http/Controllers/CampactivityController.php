@@ -98,7 +98,7 @@ class CampactivityController extends Controller
             "id" => $activity->id,
             "name" => $activity->name,
            // "title_pic" => Image::GetImage($activity->title_pic_id)->url,
-            "title_pic" => $v->title_pic_id
+            "title_pic" => $activity->title_pic_id
 	        //"file" => Image::GetImage($activity->title_pic_id)->file
             ];
         }
