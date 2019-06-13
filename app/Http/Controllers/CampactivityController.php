@@ -208,7 +208,6 @@ class CampactivityController extends Controller
 
     protected function getCarousels($typeid) {
         $carousels = Carousel::GetCarousels($typeid);
-        return $typeid;
         $urls = [];
         foreach ($carousels as $v) {
             $urls[] = [
