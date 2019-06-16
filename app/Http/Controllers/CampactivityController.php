@@ -12,6 +12,10 @@ use App\Models\Schedule;
 use App\Models\Campdt;
 use App\Models\Special;
 use App\Models\Carousel;
+use App\Models\Camp;
+use App\Models\City;
+use App\Models\Campimage;
+
 
 class CampactivityController extends Controller
 {
@@ -215,5 +219,21 @@ class CampactivityController extends Controller
             ];
         }
         return $urls;
+    }
+
+    public function getCamps() {
+        $camps = Camp::GetCamps();
+        $campsTmp = [];
+        foreach ($camps as $k => $v) {
+            $campsTmp[] = [
+            "id" => $v->id,
+            "name" => $v->name,
+	        "info" => $v->info,
+            "main" => $v->main,
+            "city" => City::GetCity($v->city_id),
+            "logo" => Campimage::GetImageUrl($v->logo_pic_id)
+            ];
+        }
+        return  $campsTmp;
     }
 }
