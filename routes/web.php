@@ -31,3 +31,5 @@ Route::post('/getCamps', 'CampactivityController@getCamps');
 
 Route::post('/saveMessage', 'MessageController@saveMessage');
 
+Route::post('/savePost', 'ForumController@savePost');
+
