@@ -15,6 +15,7 @@ use App\Models\Carousel;
 use App\Models\Camp;
 use App\Models\City;
 use App\Models\Campimage;
+use App\Models\Zizhiimage;
 
 
 class CampactivityController extends Controller
@@ -234,5 +235,42 @@ class CampactivityController extends Controller
             ];
         }
         return  $campsTmp;
+    }
+
+    public function getCampById(Request $req) {
+        $id = $req->get('id');
+        $camp = Camp::GetCampById($id);
+        return [
+            "title_pic" => Campimage::GetImageUrl($camp->title_pic_id),
+            "weixin_pic" => Campimage::GetImageUrl($camp->weixin_pic_id),
+            "address" => $camp->address,
+            "phone" => $camp->phone,
+            "email" => $camp->email,
+            "info" => $camp->info,
+            "zizhi" => $this->getZizhi($camp->good_pic_ids)
+        ];
+    }
+
+    protected function getZizhi($good_pic_ids) {
+        $pos = strpos($good_pic_ids, '@');
+        if ($pos == false){
+            $zizhi = Zizhiimage::GetImageUrl($special_ids);
+            if ($zizhi){
+                $zizhis[] = [
+                    $zizhi
+                    ];
+                return $zizhis;
+            }
+        }else{
+            $arry = preg_split("/@/",$good_pic_ids);
+            $zizhis = [];
+            foreach ($arry as $v) {
+                $zizhi = Zizhiimage::GetImageUrl($v);
+                $zizhis[] = [
+                    $zizhi
+                ];
+            }
+            return $zizhis;
+        }
     }
 }

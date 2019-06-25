@@ -13,4 +13,11 @@ class  Camp extends Model {
             return $camps;
         }
     }
+
+    public static function GetCampById($id) {
+        $camp = Camp::where("id", $id)->first();
+        if ($camp) {
+            return $camp;
+        }
+    }
 }
