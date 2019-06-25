@@ -227,7 +227,6 @@ class CampactivityController extends Controller
         foreach ($camps as $k => $v) {
             $campsTmp[] = [
             "id" => $v->id,
-            "name" => $v->name,
 	        "info" => $v->info,
             "main" => $v->main,
             "city" => City::GetCity($v->city_id),
