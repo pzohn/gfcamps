@@ -229,7 +229,7 @@ class CampactivityController extends Controller
             "id" => $v->id,
 	        "info" => $v->info,
             "main" => $v->main,
-            "city" => City::GetCity($v->city_id),
+            "city" => City::GetCity($v->city_id)->name,
             "logo" => Campimage::GetImageUrl($v->logo_pic_id)
             ];
         }
