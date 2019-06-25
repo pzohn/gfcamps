@@ -29,6 +29,8 @@ Route::post('/GetCampactivityByCounty', 'CampactivityController@GetCampactivityB
 
 Route::post('/getCamps', 'CampactivityController@getCamps');
 
+Route::post('/getCampById', 'CampactivityController@getCampById');
+
 Route::post('/saveMessage', 'MessageController@saveMessage');
 
 Route::post('/savePost', 'ForumController@savePost');
