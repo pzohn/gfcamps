@@ -247,7 +247,8 @@ class CampactivityController extends Controller
             "phone" => $camp->phone,
             "email" => $camp->email,
             "info" => $camp->info,
-            "zizhi" => $this->getZizhi($camp->good_pic_ids)
+            "zizhi" => $this->getZizhi($camp->good_pic_ids),
+            "name" => $camp->name
         ];
     }
 
