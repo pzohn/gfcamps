@@ -296,4 +296,23 @@ class CampactivityController extends Controller
             return $infoTmp;
         }
     }
+
+    public function getCampactivitiesByBigType(Request $req) {
+        $type_id = $req->get('type_id');
+        $littletypes = Littletype::GetLittleIds($type_id);
+        $campactivitiesTmp = [];
+        foreach ($littletypes as $k => $v) {
+            $littletype = $v->id;
+            $campactivities = Campactivity::GetCampactivitiesByTypeId($littletype);
+            foreach ($campactivities as $k1 => $v1) {
+                $campactivitiesTmp[] = [
+                "id" => $v1->id,
+                "name" => $v1->name,
+                "title_pic" => Image::GetImage($v->title_pic_id)->url,
+                "file" => Image::GetImage($v->title_pic_id)->file
+                ];
+            }
+        }
+        return  $campactivitiesTmp;
+    }
 }
