@@ -222,6 +222,12 @@ class CampactivityController extends Controller
         return $urls;
     }
 
+    protected function getCarousel($typeid) {
+        $carousel = Carousel::GetCarousel($typeid);
+        $url = "lunbo/" . $v->url . ".jpg";
+        return $url;
+    }
+
     public function getCamps() {
         $camps = Camp::GetCamps();
         $campsTmp = [];
@@ -308,8 +314,7 @@ class CampactivityController extends Controller
                 $campactivitiesTmp[] = [
                 "id" => $v1->id,
                 "name" => $v1->name,
-                "title_pic" => Image::GetImage($v1->title_pic_id)->url,
-                "file" => Image::GetImage($v1->title_pic_id)->file
+                "title_pic" => $this->getCarousel($$v1->type_id)
                 ];
             }
         }
