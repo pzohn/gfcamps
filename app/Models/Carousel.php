@@ -15,9 +15,9 @@ class  Carousel extends Model {
     }
 
     public static function GetCarousel($typeid) {
-        $carousels = \DB::select('SELECT * FROM carousels WHERE type=? ORDER BY RAND() LIMIT 1',[$typeid]);
-        if($carousels){
-            return $carousels;
+        $carousel = \DB::select('SELECT * FROM carousels WHERE type=? ORDER BY RAND() LIMIT 1',[$typeid]);
+        if($carousel){
+            return $carousel;
         }
     }
 }
