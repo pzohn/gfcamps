@@ -246,7 +246,7 @@ class CampactivityController extends Controller
             "address" => $camp->address,
             "phone" => $camp->phone,
             "email" => $camp->email,
-            "info" => $camp->info,
+            "info" => $this->getInfo($camp->info),
             "zizhi" => $this->getZizhi($camp->good_pic_ids),
             "name" => $camp->name
         ];
@@ -272,6 +272,22 @@ class CampactivityController extends Controller
                 ];
             }
             return $zizhis;
+        }
+    }
+
+    protected function getInfo($info) {
+        $pos = strpos($info, '<br>');
+        if ($pos == false){
+            $infoTmp = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $info;
+            return $infoTmp;
+        }else{
+            $arry = preg_split("/@/",$good_pic_ids);
+            $infoTmp = "";
+            foreach ($arry as $v) {
+                $str = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $v;
+                $infoTmp = $infoTmp . $str;
+            }
+            return $infoTmp;
         }
     }
 }
