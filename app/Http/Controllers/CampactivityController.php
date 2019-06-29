@@ -314,7 +314,7 @@ class CampactivityController extends Controller
                 $campactivitiesTmp[] = [
                 "id" => $v1->id,
                 "name" => $v1->name,
-                "title_pic" => $this->getCarousel($$v1->type_id)
+                "title_pic" => $this->getCarousel($v1->type_id)
                 ];
             }
         }
