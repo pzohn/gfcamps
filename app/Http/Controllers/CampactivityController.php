@@ -283,9 +283,14 @@ class CampactivityController extends Controller
         }else{
             $arry = preg_split("<br>",$info);
             $infoTmp = "";
+            $i = 0;
             foreach ($arry as $v) {
+                if($i > 0){
+                    $str = "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $v;
+                }
                 $str = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $v;
                 $infoTmp = $infoTmp . $str;
+                $i ++;
             }
             return $infoTmp;
         }
