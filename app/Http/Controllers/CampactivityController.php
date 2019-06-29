@@ -285,7 +285,10 @@ class CampactivityController extends Controller
             $infoTmp = "";
             $i = 0;
             foreach ($arry as $v) {
-                $str = $v;
+                if ($i == 0){
+                    $str = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $v;
+                }
+                $str = "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $v;
                 $infoTmp = $infoTmp . $str;
                 $i ++;
             }
