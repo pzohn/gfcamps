@@ -308,8 +308,8 @@ class CampactivityController extends Controller
                 $campactivitiesTmp[] = [
                 "id" => $v1->id,
                 "name" => $v1->name,
-                "title_pic" => Image::GetImage($v->title_pic_id)->url,
-                "file" => Image::GetImage($v->title_pic_id)->file
+                "title_pic" => Image::GetImage($v1->title_pic_id)->url,
+                "file" => Image::GetImage($v1->title_pic_id)->file
                 ];
             }
         }
