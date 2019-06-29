@@ -224,7 +224,7 @@ class CampactivityController extends Controller
 
     protected function getCarousel($typeid) {
         $carousel = Carousel::GetCarousel($typeid);
-        return $carousel;
+        return $carousel->url;
         $url = "lunbo/" . $carousel->url . ".jpg";
         return $url;
     }
