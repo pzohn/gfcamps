@@ -16,6 +16,7 @@ use App\Models\Camp;
 use App\Models\City;
 use App\Models\Campimage;
 use App\Models\Zizhiimage;
+use App\Models\Wxinfo;
 
 
 class CampactivityController extends Controller
@@ -329,10 +330,11 @@ class CampactivityController extends Controller
             $littletype = $v->id;
             $campactivities = Campactivity::GetCampactivitiesForWx($littletype);
             foreach ($campactivities as $k1 => $v1) {
+                $wxinfo = Wxinfo::GetWxinfoById($v1->wx_id);
                 $campactivitiesTmp[] = [
-                "id" => $v1->id,
+                "id" => $wxinfo->id,
                 "name" => $v1->name,
-                "title_pic" => $this->getCarousel($v1->type_id)
+                "title_pic" => Image::GetImageUrl($wxinfo->title_id)
                 ];
             }
         }
