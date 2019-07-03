@@ -320,4 +320,22 @@ class CampactivityController extends Controller
         }
         return  $campactivitiesTmp;
     }
+
+    public function getCampactivitiesForWx(Request $req) {
+        $type_id = $req->get('type_id');
+        $littletypes = Littletype::GetLittleIds($type_id);
+        $campactivitiesTmp = [];
+        foreach ($littletypes as $k => $v) {
+            $littletype = $v->id;
+            $campactivities = Campactivity::GetCampactivitiesForWx($littletype);
+            foreach ($campactivities as $k1 => $v1) {
+                $campactivitiesTmp[] = [
+                "id" => $v1->id,
+                "name" => $v1->name,
+                "title_pic" => $this->getCarousel($v1->type_id)
+                ];
+            }
+        }
+        return  $campactivitiesTmp;
+    }
 }

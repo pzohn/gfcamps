@@ -23,6 +23,8 @@ Route::post('/getCampactivitiesByLittleType', 'CampactivityController@getCampact
 
 Route::post('/getCampactivitiesByBigType', 'CampactivityController@getCampactivitiesByBigType');
 
+Route::post('/getCampactivitiesForWx', 'CampactivityController@getCampactivitiesForWx');
+
 Route::post('/getShowsByType', 'CampactivityController@getShowsByType');
 
 Route::post('/getCampactivityById', 'CampactivityController@getCampactivityById');

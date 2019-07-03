@@ -26,6 +26,13 @@ class  Campactivity extends Model {
         }
     }
 
+    public static function GetCampactivitiesForWx($typeid) {
+        $campactivity = Campactivity::where("type_id", $typeid)->where('wx_id','>',0)->get();
+        if ($campactivity) {
+            return $campactivity;
+        }
+    }
+
     public static function GetCampactivityByCamp($camp_id) {
         $campactivity = Campactivity::where("camp_id", $camp_id)->get();
         if ($campactivity) {
