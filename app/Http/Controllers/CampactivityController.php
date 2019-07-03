@@ -334,10 +334,27 @@ class CampactivityController extends Controller
                 $campactivitiesTmp[] = [
                 "id" => $wxinfo->id,
                 "name" => $v1->name,
-                "title_pic" => Image::GetImageUrl($wxinfo->title_id)
+                "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                "activity_id" => $v1->id
                 ];
             }
         }
         return  $campactivitiesTmp;
+    }
+
+
+    public function getWxInfoById(Request $req) {
+        $id = $req->get('id');
+        $activity_id = $req->get('activity_id');
+        $activity = $activity = Campactivity::GetCampactivityById($activity_id);
+        $wxinfo = Wxinfo::GetWxinfoById($id);
+        return [
+            "swiper_pics" => $this->getCarousels($activity->type_id),
+            "name" => $activity->name,
+            "charge" => $activity->charge,
+            "class_pics" => $this->getUrls($wxinfo->class_ids),
+            "list_pics" => $this->getUrls($wxinfo->list_ids),
+            "know_pics" => $this->getUrls($wxinfo->know_ids)
+        ];
     }
 }

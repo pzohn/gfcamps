@@ -25,6 +25,8 @@ Route::post('/getCampactivitiesByBigType', 'CampactivityController@getCampactivi
 
 Route::post('/getCampactivitiesForWx', 'CampactivityController@getCampactivitiesForWx');
 
+Route::post('/getWxInfoById', 'CampactivityController@getWxInfoById');
+
 Route::post('/getShowsByType', 'CampactivityController@getShowsByType');
 
 Route::post('/getCampactivityById', 'CampactivityController@getCampactivityById');
