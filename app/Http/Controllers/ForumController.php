@@ -11,7 +11,7 @@ class ForumController extends Controller
     public function savePost(Request $req) {
         $params_psotlist = [
             "valid" => $req->get('valid'),
-            "hasVisited" => $req->get('info_name'),
+            "hasVisited" => $req->get('hasVisited'),
             "title" => $req->get('title'),
             "username" => $req->get('username')
         ];
