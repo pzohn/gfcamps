@@ -41,3 +41,5 @@ Route::post('/saveMessage', 'MessageController@saveMessage');
 
 Route::post('/savePost', 'ForumController@savePost');
 
+Route::post('/loginByPhone', 'UserController@loginByPhone');
+
