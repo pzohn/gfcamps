@@ -24,7 +24,7 @@ class FileController extends Controller
             $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . '.' . $ext;
             $bool = Storage::disk('public')->put($filename, file_get_contents($realPath));
             if ($bool){
-                $url = "https://www.gfcamps.cn/public/storage".$filename;
+                $url = "https://www.gfcamps.cn/storage/".$filename;
                 $id = Forumimage::InsertImage($url);
                 return $id;
             }
