@@ -12,10 +12,10 @@ class FileController extends Controller
 {
     public function upload(Request $req)
     {
-        //\Log::info("1111111111111111111",[]);
+        \Log::info("1111111111111111111",[]);
          $file = $req->file('file');
          if($file->isValid()) {
-            //\Log::info("12222222222222",[]);
+        \Log::info("12222222222222",[]);
             $originalName = $file->getClientOriginalName(); // 文件原名
             $ext = $file->getClientOriginalExtension();     // 扩展名
             $realPath = $file->getRealPath();   //临时文件的绝对路径
