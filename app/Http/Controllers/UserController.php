@@ -46,7 +46,7 @@ class UserController extends Controller
         $memeber = Member::memberSelect($phone);
         if($memeber)
             return $memeber->id;
-        $memeber = Member::memberSememberInsertPhonelectPhone($phone);
+        $memeber = Member::memberInsertPhone($phone);
         if($memeber)
             return $memeber->id;
         return 0;
