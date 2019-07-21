@@ -46,4 +46,11 @@ class  Campactivity extends Model {
             return $campactivity;
         }
     }
+
+    public static function GetCampactivityByWxId($wx_id) {
+        $campactivity = Campactivity::where("wx_id", $wx_id)->first();
+        if ($campactivity) {
+            return $campactivity;
+        }
+    }
 }

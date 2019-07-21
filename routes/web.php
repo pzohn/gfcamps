@@ -51,5 +51,7 @@ Route::post('/iscollect', 'UserController@iscollect');
 
 Route::post('/getCollect', 'UserController@getCollect');
 
+Route::post('/getCampactivitiesByCollect', 'CampactivityController@getCampactivitiesByCollect');
+
 Route::post('/upload', 'FileController@upload');
 

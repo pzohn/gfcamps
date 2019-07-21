@@ -262,13 +262,16 @@ class CampactivityController extends Controller
     protected function getZizhi($good_pic_ids) {
         $pos = strpos($good_pic_ids, '@');
         if ($pos == false){
-            $zizhi = Zizhiimage::GetImageUrl($special_ids);
-            if ($zizhi){
-                $zizhis[] = [
-                    $zizhi
+            $special = Special::GetSpecial($special_ids);
+            if ($special){
+                $specials[] = [
+                        "title" => $special->title,
+                        "content" => $special->content,
+                        "pics" => $this->getUrls($special->pic_ids),
+                        "id" => $special_ids
                     ];
-                return $zizhis;
-            }
+                return $specials;
+                }
         }else{
             $arry = preg_split("/@/",$good_pic_ids);
             $zizhis = [];
@@ -356,5 +359,40 @@ class CampactivityController extends Controller
             "list_pics" => $this->getUrls($wxinfo->list_ids),
             "know_pics" => $this->getUrls($wxinfo->know_ids)
         ];
+    }
+
+    public function getCampactivitiesByCollect(Request $req) {
+        $ids = $req->get('ids');
+        $pos = strpos($ids, '@');
+        if ($pos == false){
+            $activity = Campactivity::GetCampactivityByWxId($ids);
+            $wxinfo = Wxinfo::GetWxinfoById($ids);
+            if ($activity){
+                $activities[] = [
+                    "id" => $ids,
+                    "name" => $activity->name,
+                    "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                    "activity_id" => $activity->id
+                    ];
+                return $activities;
+            }
+        }else{
+            $arry = preg_split("/@/",$ids);
+            $activities = [];
+            foreach ($arry as $v) {
+                $activity = Campactivity::GetCampactivityByWxId($v);
+                $wxinfo = Wxinfo::GetWxinfoById($v);
+                if ($activity){
+                    $activities[] = [
+                        "id" => $v,
+                        "name" => $activity->name,
+                        "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                        "activity_id" => $activity->id
+                        ];
+                    return $activities;
+                }
+            }
+            return $activities;
+        }
     }
 }
