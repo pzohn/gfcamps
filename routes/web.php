@@ -45,5 +45,7 @@ Route::post('/loginByPhone', 'UserController@loginByPhone');
 
 Route::post('/savePhone', 'UserController@savePhone');
 
+Route::post('/collect', 'UserController@collect');
+
 Route::post('/upload', 'FileController@upload');
 

@@ -28,4 +28,13 @@ class  Member extends Model {
         $member->save();
         return $member;
     }
+
+    public static function CollectUpdate($phone,$collect_ids) {
+        $member = Member::where("phone", $phone)->first();
+        if ($member) {
+            $member->collect_ids = $collect_ids;
+            $member->update();
+            return $member;
+        }
+    }
 }

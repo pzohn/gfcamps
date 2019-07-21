@@ -51,4 +51,71 @@ class UserController extends Controller
             return $memeber->id;
         return 0;
     }
+
+    public function collect(Request $req) {
+        $collect_flag = $req->get('collect_flag');
+        $phone = $req->get('phone');
+        $detail_id = $req->get('detail_id');
+        $iscollect = $this->iscollect($req);
+        if ($iscollect == $collect_flag)
+            return $iscollect;
+        $collect_ids = Member::memberSelect($phone)->collect_ids;
+        $collect_idsTmp = "";
+        if ($collect_flag){
+            if ($collect_ids == ""){
+                $collect_idsTmp = strval($detail_id);
+            }else{
+                $collect_idsTmp = $collect_ids . "@" . strval($detail_id);
+            }
+        }else{
+            if (strpos($collect_ids, '@') !== false){
+                $arry = preg_split("/@/",$collect_ids);
+                $arryTmp = [];
+                foreach ($arry as $k => $v) {
+                    $id = intval($v);
+                    if ($id != $detail_id){
+                        $arryTmp[] = $v;
+                    }
+                    $collect_idsTmp = implode("@",$arryTmp);
+                }
+            }else{
+                $collect_idsTmp = "";
+            }
+        }
+        Member::CollectUpdate($phone,$collect_idsTmp);
+        return $this->iscollect($req);
+    }
+
+    public function iscollect(Request $req) {
+        $phone = $req->get('phone');
+        $detail_id = $req->get('detail_id');
+        $member = Member::memberSelect($phone);
+        if (!$member)
+            return 0;
+        $collect_ids = $member->collect_ids;
+        if ($collect_ids == "")
+            return 0;
+        if (strpos($collect_ids, '@') !== false){
+            $arry = preg_split("/@/",$collect_ids);
+            $flag = false;
+            foreach ($arry as $k => $v) {
+                $id = intval($v);
+                if ($id == $detail_id){
+                    $flag = true;
+                }
+            }
+            if ($flag){
+                return 1;
+            }else{
+                return 0;
+            }
+        }else{
+            $id = intval($collect_ids);
+            if ($id == $detail_id){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+    }
 }
