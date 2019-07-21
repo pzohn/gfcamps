@@ -49,5 +49,7 @@ Route::post('/collect', 'UserController@collect');
 
 Route::post('/iscollect', 'UserController@iscollect');
 
+Route::post('/getCollect', 'UserController@getCollect');
+
 Route::post('/upload', 'FileController@upload');
 

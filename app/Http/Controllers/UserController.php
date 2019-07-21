@@ -118,4 +118,15 @@ class UserController extends Controller
             }
         }
     }
+
+    public function getCollect(Request $req) {
+        $login_id = $req->get('phone');
+        $member = Member::memberSelect($phone);
+        if (!$member)
+            return 0;
+        $collect_ids = $member->collect_ids;
+        if ($collect_ids == "")
+            return 0;
+        return $collect_ids;
+    }
 }
