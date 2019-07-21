@@ -382,14 +382,13 @@ class CampactivityController extends Controller
             foreach ($arry as $v) {
                 $activity = Campactivity::GetCampactivityByWxId($v);
                 $wxinfo = Wxinfo::GetWxinfoById($v);
-                if ($activity){
+                if ($activity && $wxinfo){
                     $activities[] = [
                         "id" => $v,
                         "name" => $activity->name,
                         "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                         "activity_id" => $activity->id
-                        ];
-                    return $activities;
+                   ];
                 }
             }
             return $activities;
