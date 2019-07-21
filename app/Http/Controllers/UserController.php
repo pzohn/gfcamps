@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Information;
+use App\Models\Member;
 use Qcloud\Sms\SmsSingleSender;
 
 class UserController extends Controller
@@ -39,5 +39,16 @@ class UserController extends Controller
         $randstr .= $str[$num];
         }
         return $randstr;
+    }
+
+    public function savePhone(Request $req) {
+        $phone = $req->get('phone');
+        $memeber = Member::memberSelect($phone);
+        if($memeber)
+            return $memeber->id;
+        $memeber = Member::memberSememberInsertPhonelectPhone($phone);
+        if($memeber)
+            return $memeber->id;
+        return 0;
     }
 }

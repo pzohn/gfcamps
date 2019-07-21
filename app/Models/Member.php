@@ -21,4 +21,11 @@ class  Member extends Model {
             return $member;
         }
     }
+
+    public static function memberInsertPhone($phone) {
+        $member = new self;
+        $member->phone = $phone;
+        $member->save();
+        return $member;
+    }
 }

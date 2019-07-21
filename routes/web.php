@@ -43,5 +43,7 @@ Route::post('/savePost', 'ForumController@savePost');
 
 Route::post('/loginByPhone', 'UserController@loginByPhone');
 
+Route::post('/savePhone', 'UserController@savePhone');
+
 Route::post('/upload', 'FileController@upload');
 
