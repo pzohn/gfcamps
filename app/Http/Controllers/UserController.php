@@ -58,7 +58,7 @@ class UserController extends Controller
         $detail_id = $req->get('detail_id');
         $iscollect = $this->iscollect($req);
         if ($iscollect == $collect_flag)
-            return 11222;
+            return $iscollect;
         $collect_ids = Member::memberSelect($phone)->collect_ids;
         $collect_idsTmp = "";
         if ($collect_flag){
