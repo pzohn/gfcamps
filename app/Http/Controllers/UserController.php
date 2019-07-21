@@ -120,7 +120,7 @@ class UserController extends Controller
     }
 
     public function getCollect(Request $req) {
-        $login_id = $req->get('phone');
+        $phone = $req->get('phone');
         $member = Member::memberSelect($phone);
         if (!$member)
             return 0;
