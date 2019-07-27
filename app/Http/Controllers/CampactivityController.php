@@ -345,7 +345,6 @@ class CampactivityController extends Controller
         return  $campactivitiesTmp;
     }
 
-
     public function getWxInfoById(Request $req) {
         $id = $req->get('id');
         $activity_id = $req->get('activity_id');
@@ -393,5 +392,21 @@ class CampactivityController extends Controller
             }
             return $activities;
         }
+    }
+
+    public function getWxInfoByName(Request $req) {
+        $name = $req->get('name');
+        $campactivities =  Campactivity::GetCampactivitiesByWxName($name);
+        $campactivitiesTmp = [];
+        foreach ($campactivities as $k => $v) {
+            $wxinfo = Wxinfo::GetWxinfoById($v->wx_id);
+            $campactivitiesTmp[] = [
+            "id" => $v->wx_id,
+            "name" => $v->name,
+            "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+            "activity_id" => $v->id
+            ];
+        }
+        return  $campactivitiesTmp;
     }
 }

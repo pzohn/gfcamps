@@ -20,30 +20,30 @@ class  Campactivity extends Model {
     }
 
     public static function GetCampactivitiesByTypeId($typeid) {
-        $campactivity = Campactivity::where("type_id", $typeid)->get();
-        if ($campactivity) {
-            return $campactivity;
+        $campactivities = Campactivity::where("type_id", $typeid)->get();
+        if ($campactivities) {
+            return $campactivities;
         }
     }
 
     public static function GetCampactivitiesForWx($typeid) {
-        $campactivity = Campactivity::where("type_id", $typeid)->where('wx_id','>',0)->get();
-        if ($campactivity) {
-            return $campactivity;
+        $campactivities = Campactivity::where("type_id", $typeid)->where('wx_id','>',0)->get();
+        if ($campactivities) {
+            return $campactivities;
         }
     }
 
     public static function GetCampactivityByCamp($camp_id) {
-        $campactivity = Campactivity::where("camp_id", $camp_id)->get();
-        if ($campactivity) {
-            return $campactivity;
+        $campactivities = Campactivity::where("camp_id", $camp_id)->get();
+        if ($campactivities) {
+            return $campactivities;
         }
     }
 
     public static function GetCampactivityByCounty($county_id) {
-        $campactivity = Campactivity::where("country_id", $county_id)->get();
-        if ($campactivity) {
-            return $campactivity;
+        $campactivities = Campactivity::where("country_id", $county_id)->get();
+        if ($campactivities) {
+            return $campactivities;
         }
     }
 
@@ -51,6 +51,13 @@ class  Campactivity extends Model {
         $campactivity = Campactivity::where("wx_id", $wx_id)->first();
         if ($campactivity) {
             return $campactivity;
+        }
+    }
+
+    public static function GetCampactivitiesByWxName($name) {
+        $campactivities = Campactivity::where('name','like', '%'.$name.'%')->where('wx_id','>',0)->get();
+        if ($campactivities) {
+            return $campactivities;
         }
     }
 }
