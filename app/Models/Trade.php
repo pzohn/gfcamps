@@ -38,7 +38,7 @@ class  Trade extends Model {
     }
 
     public static function getOrderAll($phone) {
-        $trades = Trade::where("phone", $phone)->where("show_status", 1)->get();
+        $trades = Trade::where("phone", $phone)->where("show_status", 1)->orderBy('updated_at', 'desc')->get();
         if ($trades) {
             return $trades;
         }
