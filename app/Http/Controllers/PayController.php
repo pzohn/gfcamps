@@ -298,7 +298,7 @@ class PayController extends Controller
                 "out_trade_no" => $v->out_trade_no,
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '已使用',
-                "date" => $v->updated_at
+                "date" => $v->updated_at->format('Y-m-d')
                 ];
             }
             return  $tradesTmp;
