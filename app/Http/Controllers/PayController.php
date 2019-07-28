@@ -45,7 +45,7 @@ class PayController extends Controller
                     'body' => $req->get('body'),
                     'mch_id' => "1509185861",
                     'nonce_str' => $this->createRand(32),
-                    'notify_url' => "https://www.hattonstar.com/onPayBack",
+                    'notify_url' => "https://www.gfcamps.cn/onPayBack",
                     'openid' => $openid,
                     'out_trade_no'=> $this->createTradeNo(),
                     'spbill_create_ip' => $req->getClientIp(),
