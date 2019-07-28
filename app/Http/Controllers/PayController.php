@@ -238,7 +238,8 @@ class PayController extends Controller
                 "out_trade_no" => $v->out_trade_no,
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => $this->getStatus($v->pay_status,$v->use_status),
-                "date" => $v->updated_at
+                "date" => $v->updated_at->format('Y-m-d H:i:s'),
+                "color" => $this->getColor($v->pay_status,$v->use_status)
                 ];
             }
             return  $tradesTmp;
@@ -258,7 +259,8 @@ class PayController extends Controller
                 "out_trade_no" => $v->out_trade_no,
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '未支付',
-                "date" => $v->updated_at
+                "date" => $v->updated_at->format('Y-m-d H:i:s'),
+                "color" => 'red'
                 ];
             }
             return  $tradesTmp;
@@ -278,7 +280,8 @@ class PayController extends Controller
                 "out_trade_no" => $v->out_trade_no,
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '已支付,未使用',
-                "date" => $v->updated_at
+                "date" => $v->updated_at->format('Y-m-d H:i:s'),
+                "color" => 'blue'
                 ];
             }
             return  $tradesTmp;
@@ -298,7 +301,8 @@ class PayController extends Controller
                 "out_trade_no" => $v->out_trade_no,
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '已使用',
-                "date" => $v->updated_at->format('Y-m-d H:i:s')
+                "date" => $v->updated_at->format('Y-m-d H:i:s'),
+                "color" => 'green'
                 ];
             }
             return  $tradesTmp;
@@ -313,6 +317,18 @@ class PayController extends Controller
                 return '已支付,未使用';
             }else if ($usestatus == 1){
                 return '已使用';
+            }
+        }
+    }
+
+    protected function getColor($paystatus,$usestatus) {
+        if ($paystatus == 0){
+            return 'red';
+        }else if ($paystatus == 1){
+            if ($usestatus == 0){
+                return 'blue';
+            }else if ($usestatus == 1){
+                return 'green';
             }
         }
     }
