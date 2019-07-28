@@ -7,6 +7,8 @@ use App\Libs\GuzzleHttp;
 use App\Models\City;
 use App\Models\Trade;
 use App\Models\Campactivity;
+use App\Models\Wxinfo;
+use App\Models\Image;
 
 
 class PayController extends Controller
@@ -209,14 +211,7 @@ class PayController extends Controller
             }
             Trade::payUpdate($params["out_trade_no"]);
             $trade = Trade::paySelect($params["out_trade_no"]);
-            $campactivity = Campactivity::GetCampactivityById($trade->detail_id);
-            // $infoPara =[
-            //     'PHONE' => $trade->phone,
-            //     'CARDID' => $trade->detail_id,
-            //     'CARDNUM' => $card->USENUM
-            // ];
-            // $info = Information::updateCard($infoPara);
-            return $campactivity;
+            return $trade;
         }
     }
 
@@ -228,5 +223,35 @@ class PayController extends Controller
             "signType" => "MD5",
             "paySign" => $resign,
         ];
+    }
+
+    public function getOrderAll(Request $req) {
+        $phone = $id = $req->get('phone');
+        $trades = Trade::getOrderAll();
+        $tradesTmp = [];
+        foreach ($trades as $k => $v) {
+            $activity = Campactivity::GetCampactivityById($v->detail_id);
+            $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+            $tradesTmp[] = [
+            "name" => $v->body,
+            "out_trade_no" => $v->out_trade_no,
+	        "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+            "status" => $this->getStatus($v->pay_status,$v->use_status),
+            "date" => $v->updated_at
+            ];
+        }
+        return  $tradesTmp;
+    }
+
+    protected function getStatus($paystatus,$usestatus) {
+        if ($paystatus == 0){
+            return '未支付';
+        }else if ($paystatus == 1){
+            if ($usestatus == 0){
+                return '已支付,未使用';
+            }else if ($usestatus == 1){
+                return '已使用';
+            }
+        }
     }
 }

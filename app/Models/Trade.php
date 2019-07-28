@@ -36,4 +36,11 @@ class  Trade extends Model {
             return $trade;
         }
     }
+
+    public static function getOrderAll($phone) {
+        $trades = Trade::where("phone", $phone)->get();
+        if ($trades) {
+            return $trades;
+        }
+    }
 }
