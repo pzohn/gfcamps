@@ -226,7 +226,7 @@ class PayController extends Controller
     }
 
     public function getOrderAll(Request $req) {
-        $phone = $id = $req->get('phone');
+        $phone = $req->get('phone');
         $trades = Trade::getOrderAll();
         $tradesTmp = [];
         foreach ($trades as $k => $v) {
