@@ -103,10 +103,14 @@ class PayController extends Controller
                     'phone' => $req->get('phone')
                  ];
                  Trade::payInsert($trade);
+                 \Log::info("----------hu1111-");
                  $resultPay = GuzzleHttp:: postXml($urlPay, $data);
+                 \Log::info("----------hu1222-");
                  $decode = $this->decodeXml($resultPay);
+                 \Log::info("----------hu13331-");
                  if ($decode["result_code"] == "SUCCESS")
                  {
+                    \Log::info("----------hu1444441-");
                     $sian_time = (string)time();
                     $resign = $this->createReSign($decode,$sian_time);
                     return $this->wxBack($decode,$resign,$sian_time);
