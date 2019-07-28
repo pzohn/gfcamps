@@ -63,3 +63,9 @@ Route::post('/onPayBack', 'PayController@onPayBack');
 
 Route::post('/getOrderAll', 'PayController@getOrderAll');
 
+Route::post('/getOrderUnPay', 'PayController@getOrderUnPay');
+
+Route::post('/getOrderUnUse', 'PayController@getOrderUnUse');
+
+Route::post('/getOrderUse', 'PayController@getOrderUse');
+
