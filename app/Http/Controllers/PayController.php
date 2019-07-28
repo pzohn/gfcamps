@@ -42,14 +42,14 @@ class PayController extends Controller
                 $urlPay = "https://api.mch.weixin.qq.com/pay/unifiedorder";
                 $params = [
                     'appid' => $paramsLogin["appid"],
-                    'body' => $req->get('body'),
+                    'body' => $campactivity->name,
                     'mch_id' => "1547227511",
                     'nonce_str' => $this->createRand(32),
                     'notify_url' => "https://www.gfcamps.cn/onPayBack",
                     'openid' => $openid,
                     'out_trade_no'=> $this->createTradeNo(),
                     'spbill_create_ip' => $req->getClientIp(),
-                    'total_fee' => $campactivity->charge * 100 * $req->get('num'),
+                    'total_fee' => $campactivity->charge * 100,
                     'trade_type' => "JSAPI",
                     ];
 
@@ -95,14 +95,10 @@ class PayController extends Controller
                     'phone' => $req->get('phone')
                  ];
                  Trade::payInsert($trade);
-                 \Log::info("----------hu1111-");
                  $resultPay = GuzzleHttp:: postXml($urlPay, $data);
-                 \Log::info("----------hu1222-");
                  $decode = $this->decodeXml($resultPay);
-                 \Log::info("----------hu13331-");
                  if ($decode["result_code"] == "SUCCESS")
                  {
-                    \Log::info("----------hu1444441-");
                     $sian_time = (string)time();
                     $resign = $this->createReSign($decode,$sian_time);
                     return $this->wxBack($decode,$resign,$sian_time);
