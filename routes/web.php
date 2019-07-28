@@ -57,3 +57,5 @@ Route::post('/getWxInfoByName', 'CampactivityController@getWxInfoByName');
 
 Route::post('/upload', 'FileController@upload');
 
+Route::post('/onPay', 'PayController@onPay');
+
