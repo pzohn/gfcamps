@@ -86,8 +86,6 @@ class PayController extends Controller
                     <openid>$openid</openid>
                     <out_trade_no>$out_trade_no</out_trade_no>
                     <spbill_create_ip>$spbill_create_ip</spbill_create_ip>
-                    <total>$total</total>
-                    <fee>$fee</fee>
                     <total_fee>$total_fee</total_fee>
                     <trade_type>$trade_type</trade_type>
                     <sign>$sign</sign>
