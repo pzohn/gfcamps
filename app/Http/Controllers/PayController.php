@@ -49,8 +49,6 @@ class PayController extends Controller
                     'openid' => $openid,
                     'out_trade_no'=> $this->createTradeNo(),
                     'spbill_create_ip' => $req->getClientIp(),
-                    'total' => $req->get('num'),
-                    'fee' => $campactivity->charge * 100,
                     'total_fee' => $campactivity->charge * 100 * $req->get('num'),
                     'trade_type' => "JSAPI",
                     ];
@@ -68,8 +66,6 @@ class PayController extends Controller
                     $nonce_str = $params["nonce_str"];
                     $body = $params["body"];
                     $out_trade_no = $params["out_trade_no"];
-                    $total = $params["total"];
-                    $fee = $params["fee"];
                     $total_fee = $params["total_fee"];
                     $spbill_create_ip = $req->getClientIp();
                     $notify_url = $params["notify_url"];
@@ -86,8 +82,6 @@ class PayController extends Controller
                     <openid>$openid</openid>
                     <out_trade_no>$out_trade_no</out_trade_no>
                     <spbill_create_ip>$spbill_create_ip</spbill_create_ip>
-                    <total>$total</total>
-                    <fee>$fee</fee>
                     <total_fee>$total_fee</total_fee>
                     <trade_type>$trade_type</trade_type>
                     <sign>$sign</sign>
@@ -97,8 +91,6 @@ class PayController extends Controller
                     'out_trade_no' => $params["out_trade_no"],
                     'body' => $params["body"],
                     'detail_id' => $req->get('detail_id'),
-                    'total' => $params["total"],
-                    'fee' => $params["fee"] * 0.01,
                     'total_fee' => $params["total_fee"] * 0.01,
                     'phone' => $req->get('phone')
                  ];
