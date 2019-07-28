@@ -45,21 +45,21 @@ class  Trade extends Model {
     }
 
     public static function getOrderUnPay($phone) {
-        $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 0)->get();
+        $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 0)->orderBy('updated_at', 'desc')->get();
         if ($trades) {
             return $trades;
         }
     }
 
     public static function getOrderUnUse($phone) {
-        $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 1)->where("use_status", 0)->get();
+        $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 1)->where("use_status", 0)->orderBy('updated_at', 'desc')->get();
         if ($trades) {
             return $trades;
         }
     }
 
     public static function getOrderUse($phone) {
-        $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 1)->where("use_status", 1)->get();
+        $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 1)->where("use_status", 1)->orderBy('updated_at', 'desc')->get();
         if ($trades) {
             return $trades;
         }
