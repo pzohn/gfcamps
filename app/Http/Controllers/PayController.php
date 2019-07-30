@@ -239,7 +239,9 @@ class PayController extends Controller
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => $this->getStatus($v->pay_status,$v->use_status),
                 "date" => $v->updated_at->format('Y-m-d H:i:s'),
-                "color" => $this->getColor($v->pay_status,$v->use_status)
+                "color" => $this->getColor($v->pay_status,$v->use_status),
+                "id" => $wxinfo->id,
+                "activity_id" => $activity->id
                 ];
             }
             return  $tradesTmp;
@@ -260,7 +262,9 @@ class PayController extends Controller
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '未支付',
                 "date" => $v->updated_at->format('Y-m-d H:i:s'),
-                "color" => 'red'
+                "color" => 'red',
+                "id" => $wxinfo->id,
+                "activity_id" => $activity->id
                 ];
             }
             return  $tradesTmp;
@@ -281,7 +285,9 @@ class PayController extends Controller
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '已支付,未使用',
                 "date" => $v->updated_at->format('Y-m-d H:i:s'),
-                "color" => 'blue'
+                "color" => 'blue',
+                "id" => $wxinfo->id,
+                "activity_id" => $activity->id
                 ];
             }
             return  $tradesTmp;
@@ -302,7 +308,9 @@ class PayController extends Controller
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                 "status" => '已使用',
                 "date" => $v->updated_at->format('Y-m-d H:i:s'),
-                "color" => 'green'
+                "color" => 'green',
+                "id" => $wxinfo->id,
+                "activity_id" => $activity->id
                 ];
             }
             return  $tradesTmp;
