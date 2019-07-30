@@ -158,7 +158,7 @@ class PayController extends Controller
                     'openid' => $openid,
                     'out_trade_no'=> $trade->out_trade_no,
                     'spbill_create_ip' => $req->getClientIp(),
-                    'total_fee' => $trade->total_fee * 100,
+                    'total_fee' => $trade->total_fee,
                     'trade_type' => "JSAPI",
                     ];
                     ksort($params);
