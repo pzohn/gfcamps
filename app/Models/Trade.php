@@ -46,6 +46,13 @@ class  Trade extends Model {
         }
     }
 
+    public static function paySelectById($id) {
+        $trade = Trade::where("id", $id)->first();
+        if ($trade) {
+            return $trade;
+        }
+    }
+
     public static function getOrderAll($phone) {
         $trades = Trade::where("phone", $phone)->where("show_status", 1)->orderBy('updated_at', 'desc')->get();
         if ($trades) {
