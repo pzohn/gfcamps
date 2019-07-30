@@ -161,7 +161,6 @@ class PayController extends Controller
                     'total_fee' => $trade->total_fee * 100,
                     'trade_type' => "JSAPI",
                     ];
-                    \Log::info("---11177uuuu-------");
                     ksort($params);
 
                     $stringA = "";
