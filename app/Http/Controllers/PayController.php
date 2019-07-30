@@ -147,7 +147,9 @@ class PayController extends Controller
             $session_key = $resultLogin['session_key'];
 
             if ($openid && $session_key) {
+                \Log::info("---eeeee-------");
                 $trade = Trade::paySelectById($req->get('trade_id'));
+                \Log::info("---eeettttee-------");
                 $urlPay = "https://api.mch.weixin.qq.com/pay/unifiedorder";
                 $params = [
                     'appid' => $paramsLogin["appid"],
@@ -161,7 +163,7 @@ class PayController extends Controller
                     'total_fee' => $$trade->total_fee * 100,
                     'trade_type' => "JSAPI",
                     ];
-
+                    \Log::info("---11177uuuu-------");
                     ksort($params);
 
                     $stringA = "";
