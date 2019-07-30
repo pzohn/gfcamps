@@ -59,7 +59,7 @@ Route::post('/upload', 'FileController@upload');
 
 Route::post('/onPay', 'PayController@onPay');
 
-Route::post('/onRePay', 'PayController@onPay');
+Route::post('/onRePay', 'PayController@onRePay');
 
 Route::post('/onPayBack', 'PayController@onPayBack');
 
