@@ -242,7 +242,8 @@ class PayController extends Controller
                 "color" => $this->getColor($v->pay_status,$v->use_status),
                 "id" => $wxinfo->id,
                 "activity_id" => $activity->id,
-                "trade_id" => $v->id
+                "trade_id" => $v->id,
+                "charge" => $v->total_fee
                 ];
             }
             return  $tradesTmp;
@@ -266,7 +267,8 @@ class PayController extends Controller
                 "color" => 'red',
                 "id" => $wxinfo->id,
                 "activity_id" => $activity->id,
-                "trade_id" => $v->id
+                "trade_id" => $v->id,
+                "charge" => $v->total_fee
                 ];
             }
             return  $tradesTmp;
@@ -290,7 +292,8 @@ class PayController extends Controller
                 "color" => 'blue',
                 "id" => $wxinfo->id,
                 "activity_id" => $activity->id,
-                "trade_id" => $v->id
+                "trade_id" => $v->id,
+                "charge" => $v->total_fee
                 ];
             }
             return  $tradesTmp;
@@ -314,7 +317,8 @@ class PayController extends Controller
                 "color" => 'green',
                 "id" => $wxinfo->id,
                 "activity_id" => $activity->id,
-                "trade_id" => $v->id
+                "trade_id" => $v->id,
+                "charge" => $v->total_fee
                 ];
             }
             return  $tradesTmp;
