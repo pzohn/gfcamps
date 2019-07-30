@@ -69,3 +69,7 @@ Route::post('/getOrderUnUse', 'PayController@getOrderUnUse');
 
 Route::post('/getOrderUse', 'PayController@getOrderUse');
 
+Route::post('/hideOrder', 'PayController@hideOrder');
+
+Route::post('/useUpdate', 'PayController@useUpdate');
+

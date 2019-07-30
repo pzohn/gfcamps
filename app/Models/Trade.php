@@ -30,6 +30,15 @@ class  Trade extends Model {
         }
     }
 
+    public static function useUpdate($id) {
+        $trade = Trade::where("id", $id)->first();
+        if ($trade) {
+            $trade->use_status = 1;
+            $trade->update();
+            return $trade;
+        }
+    }
+
     public static function paySelect($out_trade_no) {
         $trade = Trade::where("out_trade_no", $out_trade_no)->first();
         if ($trade) {
@@ -62,6 +71,15 @@ class  Trade extends Model {
         $trades = Trade::where("phone", $phone)->where("show_status", 1)->where("pay_status", 1)->where("use_status", 1)->orderBy('updated_at', 'desc')->get();
         if ($trades) {
             return $trades;
+        }
+    }
+
+    public static function hideOrder($id) {
+        $trade = Trade::where("id", $id)->first();
+        if ($trade) {
+            $trade->show_status = 0;
+            $trade->update();
+            return $trade;
         }
     }
 }

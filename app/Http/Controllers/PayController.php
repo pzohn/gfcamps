@@ -344,4 +344,20 @@ class PayController extends Controller
             }
         }
     }
+
+    public function hideOrder(Request $req) {
+        $id = $req->get('id');
+        $trade = Trade::hideOrder($id);
+        if ($trade) {
+            return  $trade;
+        }
+    }
+
+    public function useUpdate(Request $req) {
+        $id = $req->get('id');
+        $trade = Trade::useUpdate($id);
+        if ($trade) {
+            return  $trade;
+        }
+    }
 }
