@@ -41,6 +41,10 @@ class  Member extends Model {
     public static function memberUpdatePhone($params) {
         \Log::info("----------", [$params]);
         \Log::info("----------", [array_get($params,"phone")]);
+        \Log::info("----------", [array_get($params,"name")]);
+        \Log::info("----------", [array_get($params,"email")]);
+        \Log::info("----------", [array_get($params,"sex")]);
+        \Log::info("----------", [array_get($params,"age")]);
         $member = Member::where("phone", array_get($params,"phone"))->first();
         if ($member) {
             \Log::info("9999999");
