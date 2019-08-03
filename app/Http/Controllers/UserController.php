@@ -132,11 +132,11 @@ class UserController extends Controller
 
     public function memberUpdate(Request $req) {
         $params[] = [
-            "phone" => $req->get('phone'),
-            "name" => $req->get('name'),
-            "email" => $req->get('email'),
-            "sex" => $req->get('sex'),
-            "age" => $req->get('age')
+            'phone' => $req->get('phone'),
+            'name' => $req->get('name'),
+            'email' => $req->get('email'),
+            'sex' => $req->get('sex'),
+            'age' => $req->get('age')
             ];
         $member = Member::memberUpdatePhone($params);
         if ($member){
