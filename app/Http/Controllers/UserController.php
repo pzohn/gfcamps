@@ -131,7 +131,7 @@ class UserController extends Controller
     }
 
     public function memberUpdate(Request $req) {
-        $params[] = [
+        $params = [
             'phone' => $req->get('phone'),
             'name' => $req->get('name'),
             'email' => $req->get('email'),
