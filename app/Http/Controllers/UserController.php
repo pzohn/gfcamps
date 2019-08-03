@@ -129,4 +129,25 @@ class UserController extends Controller
             return 0;
         return $collect_ids;
     }
+
+    public function memberUpdate(Request $req) {
+        $params[] = [
+            "phone" => $req->get('phone'),
+            "name" => $req->get('name'),
+            "email" => $req->get('email'),
+            "sex" => $req->get('sex'),
+            "age" => $req->get('age')
+            ];
+        $member = Member::memberUpdatePhone($params);
+        if ($member){
+            return $member;
+        }
+    }
+
+    public function memberSelect(Request $req) {
+        $member = Member::memberSelect($req->get('phone'));
+        if ($member){
+            return $member;
+        }
+    }
 }

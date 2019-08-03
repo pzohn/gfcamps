@@ -51,6 +51,10 @@ Route::post('/iscollect', 'UserController@iscollect');
 
 Route::post('/getCollect', 'UserController@getCollect');
 
+Route::post('/memberUpdate', 'UserController@memberUpdate');
+
+Route::post('/memberSelect', 'UserController@memberSelect');
+
 Route::post('/getCampactivitiesByCollect', 'CampactivityController@getCampactivitiesByCollect');
 
 Route::post('/getWxInfoByName', 'CampactivityController@getWxInfoByName');

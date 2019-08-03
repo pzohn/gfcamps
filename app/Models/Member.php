@@ -37,4 +37,16 @@ class  Member extends Model {
             return $member;
         }
     }
+
+    public static function memberUpdatePhone($params) {
+        $member = Member::where("phone", array_get($params,"phone"))->first();
+        if ($member) {
+            $member->name = array_get($params,"name");
+            $member->email = array_get($params,"email");
+            $member->sex = array_get($params,"sex");
+            $member->age = array_get($params,"age");
+            $member->update();
+            return $member;
+        }
+    }
 }
