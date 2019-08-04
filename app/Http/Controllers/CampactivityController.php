@@ -17,6 +17,7 @@ use App\Models\City;
 use App\Models\Campimage;
 use App\Models\Zizhiimage;
 use App\Models\Wxinfo;
+use App\Models\Ninesquare;
 
 
 class CampactivityController extends Controller
@@ -408,5 +409,17 @@ class CampactivityController extends Controller
             ];
         }
         return  $campactivitiesTmp;
+    }
+
+    public function getNine() {
+        $ninesquares = Ninesquare::getNine();
+        $ninesquaresTmp = [];
+        foreach ($ninesquares as $k => $v) {
+            $ninesquaresTmp[] = [
+            "camp_id" => $v->activity_id,
+	        "title_pic" => Image::GetImageUrl($v->pic_id)
+            ];
+        }
+        return  $ninesquaresTmp;
     }
 }

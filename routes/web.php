@@ -59,6 +59,8 @@ Route::post('/getCampactivitiesByCollect', 'CampactivityController@getCampactivi
 
 Route::post('/getWxInfoByName', 'CampactivityController@getWxInfoByName');
 
+Route::post('/getNine', 'CampactivityController@getNine');
+
 Route::post('/upload', 'FileController@upload');
 
 Route::post('/onPay', 'PayController@onPay');
