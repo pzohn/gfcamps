@@ -417,8 +417,7 @@ class CampactivityController extends Controller
         foreach ($ninesquares as $k => $v) {
             $ninesquaresTmp[] = [
             "camp_id" => $v->activity_id,
-            "title_pic" => Image::GetImage($v->pic_id)->url,
-	        "file" => Image::GetImage($v->pic_id)->file
+            "title_pic" => Campimage::GetImageUrl($v->pic_id)
             ];
         }
         return  $ninesquaresTmp;
