@@ -7,7 +7,7 @@ class  Campactivity extends Model {
 
     public static function GetCampactivities() {
 
-        $campactivities = Campactivity::paginate(9);
+        $campactivities = Campactivity::paginate(10,['*'],'page',3);
         //$campactivities = Campactivity::get();
         if ($campactivities) {
             return $campactivities;
