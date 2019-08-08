@@ -28,9 +28,11 @@ class CampactivityController extends Controller
         foreach ($campactivities as $k => $v) {
             $campactivitiesTmp[] = [
             "id" => $v->id,
-            "name" => $v->name,
-	        "title_pic" => Image::GetImage($v->title_pic_id)->url,
-	        "file" => Image::GetImage($v->title_pic_id)->file
+            "name" => $v->name
+            // "id" => $v->id,
+            // "name" => $v->name,
+	        // "title_pic" => Image::GetImage($v->title_pic_id)->url,
+	        // "file" => Image::GetImage($v->title_pic_id)->file
             ];
         }
         return  $campactivitiesTmp;
