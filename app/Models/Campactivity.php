@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 class  Campactivity extends Model {
 
     public static function GetCampactivities() {
-        $campactivities = Campactivity::get()->paginate(10);
+
+        $campactivities = Campactivity::paginate(15);
+        //$campactivities = Campactivity::get();
         if ($campactivities) {
             return $campactivities;
         }
