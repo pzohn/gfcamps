@@ -62,4 +62,11 @@ class  Campactivity extends Model {
             return $campactivities;
         }
     }
+
+    public static function GetPage($limit,$page) {
+        $campactivities = Campactivity::paginate($limit,['*'],'page',$page);
+        if ($campactivities) {
+            return $campactivities;
+        }
+    }
 }

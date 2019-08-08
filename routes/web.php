@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::post('/getCity', 'PayController@getCity');
 
+Route::post('/getPage', 'CampactivityController@getPage');
+
 Route::post('/getCampactivities', 'CampactivityController@getCampactivities');
 
 Route::post('/getCampactivitiesByLittleType', 'CampactivityController@getCampactivitiesByLittleType');
