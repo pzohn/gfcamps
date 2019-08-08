@@ -427,7 +427,7 @@ class CampactivityController extends Controller
 
     public function getPage(Request $req) {
         $campactivities = Campactivity::GetPage($req->get('limit'),$req->get('page'));
-        return  $campactivitiesTmp;
+        return  $campactivities;
     }
 
 }
