@@ -90,10 +90,10 @@ class ForumController extends Controller
         $postlists = Postlist::listsGet();
         $postlistsTmp = [];
         foreach ($postlists as $k => $v) {
-            $itemImage = Postitem::itemImgGet($id);
+            $itemImage = Postitem::itemImgGet($v->imageurl_ids);
             $imgUrl = "";
             if ($itemImage){
-                $imgUrl = Forumimage::getImageUrl($itemImage->imageurl_ids);
+                $imgUrl = Forumimage::getImageUrl($itemImage->id);
             }
             $postlistsTmp[] = [
                 "id" => $v->id,
