@@ -103,6 +103,6 @@ class ForumController extends Controller
                 "pic" => $imgUrl
             ];
         }
-        return $paraPost;
+        return $postlistsTmp;
     }
 }
