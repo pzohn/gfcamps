@@ -23,4 +23,11 @@ class  Postlist extends Model {
             return $postlist;
         }
     }
+
+    public static function listsGet() {
+        $postlists = Postlist::get();
+        if ($postlists) {
+            return $postlists;
+        }
+    }
 }

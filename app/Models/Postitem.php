@@ -29,4 +29,11 @@ class  Postitem extends Model {
             return $postitems;
         }
     }
+
+    public static function itemImgGet($id) {
+        $postitem = Postitem::where("parent_id", $id)->where("type", 3)->first();
+        if ($postitem) {
+            return $postitem;
+        }
+    }
 }

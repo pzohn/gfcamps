@@ -36,7 +36,7 @@ class ForumController extends Controller
             "videourl_ids" => $req->get('videourl_ids'),
             "imgTextFlag" => $req->get('imgTextFlag'),
             "videoTextFlag" => $req->get('videoTextFlag'),
-            "videoImgFlag" => $req->get('imageurl_ids'),
+            "videoImgFlag" => $req->get('videoImgFlag'),
             "data" => $req->get('data'),
             "parent_id" => $req->get('parent_id')
         ];
@@ -86,4 +86,23 @@ class ForumController extends Controller
         return $paraPost;
     }
 
+    public function getPostLists() {
+        $postlists = Postlist::listGets();
+        $postlistsTmp = [];
+        foreach ($postlists as $k => $v) {
+            $itemImage = Postitem::itemImgGet($id);
+            $imgUrl = "";
+            if ($itemImage){
+                $imgUrl = Forumimage::getImageUrl($itemImage->imageurl_ids);
+            }
+            $postlistsTmp[] = [
+                "id" => $v->id,
+                "title" => $v->title,
+                "nickname" => $v->nickname,
+                "date" => $v->created_at->format('Y-m-d'),
+                "pic" => $imgUrl
+            ];
+        }
+        return $paraPost;
+    }
 }
