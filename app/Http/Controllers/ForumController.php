@@ -87,7 +87,7 @@ class ForumController extends Controller
     }
 
     public function getPostLists() {
-        $postlists = Postlist::listGets();
+        $postlists = Postlist::listsGet();
         $postlistsTmp = [];
         foreach ($postlists as $k => $v) {
             $itemImage = Postitem::itemImgGet($id);
