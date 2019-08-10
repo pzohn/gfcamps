@@ -41,7 +41,9 @@ Route::post('/getCampById', 'CampactivityController@getCampById');
 
 Route::post('/saveMessage', 'MessageController@saveMessage');
 
-Route::post('/savePost', 'ForumController@savePost');
+Route::post('/savePostList', 'ForumController@savePostList');
+
+Route::post('/savePostListItem', 'ForumController@savePostListItem');
 
 Route::post('/loginByPhone', 'UserController@loginByPhone');
 

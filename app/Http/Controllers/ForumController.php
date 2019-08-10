@@ -8,7 +8,7 @@ use App\Models\Postitem;
 
 class ForumController extends Controller
 {
-    public function savePost(Request $req) {
+    public function savePostList(Request $req) {
         $params_psotlist = [
             "valid" => $req->get('valid'),
             "hasVisited" => $req->get('hasVisited'),
@@ -16,7 +16,13 @@ class ForumController extends Controller
             "username" => $req->get('username')
         ];
         $postlist = Postlist::listInsert($params_psotlist);
+        if ($postlist){
+            return $postlist->id;
+        }
+        return 0;
+    }
 
+    public function savePostListItem(Request $req) {
         $params_psotitem = [
             "valid" => $req->get('itemvalid'),
             "type" => $req->get('type'),
@@ -30,7 +36,7 @@ class ForumController extends Controller
             "videoTextFlag" => $req->get('videoTextFlag'),
             "videoImgFlag" => $req->get('imageurl_ids'),
             "data" => $req->get('data'),
-            "parent_id" => $postlist->id
+            "parent_id" => $req->get('parent_id')
         ];
         $postitem = Postitem::listInsert($params_psotitem);
     }
