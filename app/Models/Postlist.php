@@ -12,6 +12,7 @@ class  Postlist extends Model {
         $postlist->hasVisited = array_get($params,"hasVisited");
         $postlist->title = array_get($params,"title");
         $postlist->username = array_get($params,"username");
+        $postlist->nickname = array_get($params,"nickname");
         $postlist->save();
         return $postlist;
     }

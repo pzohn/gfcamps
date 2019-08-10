@@ -13,7 +13,8 @@ class ForumController extends Controller
             "valid" => $req->get('valid'),
             "hasVisited" => $req->get('hasVisited'),
             "title" => $req->get('title'),
-            "username" => $req->get('username')
+            "username" => $req->get('username'),
+            "nickname" => $req->get('nickname')
         ];
         $postlist = Postlist::listInsert($params_psotlist);
         if ($postlist){
