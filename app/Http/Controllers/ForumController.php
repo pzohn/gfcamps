@@ -40,7 +40,7 @@ class ForumController extends Controller
             "data" => $req->get('data'),
             "parent_id" => $req->get('parent_id')
         ];
-        $postitem = Postitem::listInsert($params_psotitem);
+        $postitem = Postitem::itemInsert($params_psotitem);
         if ($postitem){
             return $postitem;
         }
