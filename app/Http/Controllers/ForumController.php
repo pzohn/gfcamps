@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Postlist;
 use App\Models\Postitem;
+use App\Models\Forumimage;
 
 class ForumController extends Controller
 {
@@ -40,5 +41,49 @@ class ForumController extends Controller
             "parent_id" => $req->get('parent_id')
         ];
         $postitem = Postitem::listInsert($params_psotitem);
+        if ($postitem){
+            return $postitem;
+        }
+        return 0;
     }
+
+    public function getPostList(Request $req) {
+        $id = $req->get('id');
+        $postlist = Postlist::listGet($id);
+        $postitems = Postitem::itemsGet($id);
+
+        $postitemsTmp = [];
+        foreach ($postitems as $k => $v) {
+            $imageurl = "";
+            $videourl = "";
+            if ($v->imageurl_ids){
+                $imageurl = Forumimage::getImageUrl($v->imageurl_ids);
+            }
+            $postitemsTmp[] = [
+                "valid" => $v->valid,
+                "type" => $v->type,
+                "color" => $v->color,
+                "size" => $v->size,
+                "weight" => $v->weight,
+                "underline" => $v->underline,
+                "imageurl" => $imageurl,
+                "videourl" => $videourl,
+                "imgTextFlag" => $v->imgTextFlag,
+                "videoTextFlag" => $v->videoTextFlag,
+                "videoImgFlag" => $v->imageurl_ids,
+                "data" => $v->data
+            ];
+        }
+        $paraPost = [
+            "id" => $postlist->id,
+            "valid" => $postlist->valid,
+            "hasVisited" => $postlist->hasVisited,
+            "title" => $postlist->title,
+            "username" => $postlist->username,
+            "nickname" => $postlist->nickname,
+            "items" => $postitemsTmp
+        ];
+        return $paraPost;
+    }
+
 }

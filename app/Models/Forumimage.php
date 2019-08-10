@@ -13,4 +13,11 @@ class  Forumimage extends Model {
         $forumimage->save();
         return $forumimage->id;
     }
+
+    public static function getImageUrl($id) {
+        $forumimage = Forumimage::where("id", $id)->first();
+        if ($forumimage){
+            return $forumimage->url;
+        }
+    }
 }

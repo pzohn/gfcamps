@@ -45,6 +45,8 @@ Route::post('/savePostList', 'ForumController@savePostList');
 
 Route::post('/savePostListItem', 'ForumController@savePostListItem');
 
+Route::post('/getPostList', 'ForumController@getPostList');
+
 Route::post('/loginByPhone', 'UserController@loginByPhone');
 
 Route::post('/savePhone', 'UserController@savePhone');

@@ -22,4 +22,11 @@ class  Postitem extends Model {
         $postitem->save();
         return $postitem;
     }
+
+    public static function itemsGet($id) {
+        $postitems = Postitem::where("parent_id", $id)->get();
+        if ($postitems) {
+            return $postitems;
+        }
+    }
 }

@@ -16,4 +16,11 @@ class  Postlist extends Model {
         $postlist->save();
         return $postlist;
     }
+
+    public static function listGet($id) {
+        $postlist = Postlist::where("id", $id)->first();
+        if ($postlist) {
+            return $postlist;
+        }
+    }
 }
