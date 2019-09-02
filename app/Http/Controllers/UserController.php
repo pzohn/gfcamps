@@ -12,7 +12,7 @@ class UserController extends Controller
         $appid = 1400184176;
         $appkey = 'c5f98a9fd6a8828dea964516fc98e574';
         $phone = $req->get('phone');
-        $templateId = 295943;
+        $templateId = 200473;
         $smsSign = '';
         $code = $this->createRand(4);
         try {
