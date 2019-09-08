@@ -16,6 +16,8 @@ class  Postitem extends Model {
         $postitem->underline = array_get($params,"underline");
         $postitem->imgTextFlag = array_get($params,"imgTextFlag");
         $postitem->videoTextFlag = array_get($params,"videoTextFlag");
+        $postitem->imageurl_ids = array_get($params,"imageurl_ids");
+        $postitem->videourl_ids = array_get($params,"videourl_ids");
         $postitem->videoImgFlag = array_get($params,"videoImgFlag");
         $postitem->data = array_get($params,"data");
         $postitem->parent_id = array_get($params,"parent_id");
