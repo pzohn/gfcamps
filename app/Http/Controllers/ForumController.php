@@ -81,6 +81,7 @@ class ForumController extends Controller
             "title" => $postlist->title,
             "username" => $postlist->username,
             "nickname" => $postlist->nickname,
+            "date" => $postlist->created_at->format('Y-m-d'),
             "items" => $postitemsTmp
         ];
         return $paraPost;
