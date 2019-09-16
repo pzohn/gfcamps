@@ -24,10 +24,12 @@ class  Postlist extends Model {
         }
     }
 
-    public static function listsGet() {
-        $postlists = Postlist::get();
+    public static function listsGetByPhone($phone) {
+        $postlists = Postlist::where("username", $phone)->get();;
         if ($postlists) {
             return $postlists;
         }
     }
+
+
 }

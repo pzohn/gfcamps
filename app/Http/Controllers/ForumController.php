@@ -87,8 +87,9 @@ class ForumController extends Controller
         return $paraPost;
     }
 
-    public function getPostLists() {
-        $postlists = Postlist::listsGet();
+    public function getPostListsByPhone(Request $req) {
+        $phone = $req->get('phone');
+        $postlists = Postlist::listsGetByPhone($phone);
         $postlistsTmp = [];
         foreach ($postlists as $k => $v) {
             $itemImage = Postitem::itemImgGet($v->id);
@@ -106,4 +107,6 @@ class ForumController extends Controller
         }
         return $postlistsTmp;
     }
+
+
 }
