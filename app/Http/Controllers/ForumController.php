@@ -87,6 +87,26 @@ class ForumController extends Controller
         return $paraPost;
     }
 
+    public function getPostLists() {
+        $postlists = Postlist::listsGet();
+        $postlistsTmp = [];
+        foreach ($postlists as $k => $v) {
+            $itemImage = Postitem::itemImgGet($v->id);
+            $imgUrl = "";
+            if ($itemImage){
+                $imgUrl = Forumimage::getImageUrl($itemImage->imageurl_ids);
+            }
+            $postlistsTmp[] = [
+                "id" => $v->id,
+                "title" => $v->title,
+                "nickname" => $v->nickname,
+                "date" => $v->created_at->format('Y-m-d'),
+                "pic" => $imgUrl
+            ];
+        }
+        return $postlistsTmp;
+    }
+
     public function getPostListsByPhone(Request $req) {
         $phone = $req->get('phone');
         $postlists = Postlist::listsGetByPhone($phone);
@@ -107,6 +127,4 @@ class ForumController extends Controller
         }
         return $postlistsTmp;
     }
-
-
 }
