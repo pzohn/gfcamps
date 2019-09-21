@@ -359,7 +359,8 @@ class CampactivityController extends Controller
             "charge" => $activity->charge,
             "class_pics" => $this->getUrls($wxinfo->class_ids),
             "list_pics" => $this->getUrls($wxinfo->list_ids),
-            "know_pics" => $this->getUrls($wxinfo->know_ids)
+            "know_pics" => $this->getUrls($wxinfo->know_ids),
+            "title_pic" => Image::GetImageUrl($wxinfo->title_id)
         ];
     }
 
