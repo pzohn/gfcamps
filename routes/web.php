@@ -91,3 +91,11 @@ Route::post('/hideOrder', 'PayController@hideOrder');
 
 Route::post('/useUpdate', 'PayController@useUpdate');
 
+Route::post('/getAddress', 'UserController@getAddress');
+
+Route::post('/insertAddress', 'UserController@insertAddress');
+
+Route::post('/updateAddress', 'UserController@updateAddress');
+
+Route::post('/delAddress', 'UserController@delAddress');
+

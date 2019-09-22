@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Qcloud\Sms\SmsSingleSender;
+use App\Models\Address;
 
 class UserController extends Controller
 {
@@ -149,5 +150,50 @@ class UserController extends Controller
         if ($member){
             return $member;
         }
+    }
+
+    public function getAddress(Request $req) {
+        $address = Address::GetAddress($req->get('login_id'));
+        if ($address){
+            return $address;
+        }
+    }
+
+    public function insertAddress(Request $req) {
+        $params = [
+            "name" => $req->get('name'),
+            "phone" => $req->get('phone'),
+            "province" => $req->get('province'),
+            "city" => $req->get('city'),
+            "area" => $req->get('area'),
+            "detail" => $req->get('detail'),
+            "login_id" => $req->get('login_id')
+        ];
+        $address = Address::addressInsert($params);
+        if ($address){
+            return $address;
+        }
+    }
+
+    public function updateAddress(Request $req) {
+        $params = [
+            "name" => $req->get('name'),
+            "phone" => $req->get('phone'),
+            "province" => $req->get('province'),
+            "city" => $req->get('city'),
+            "area" => $req->get('area'),
+            "detail" => $req->get('detail'),
+            "login_id" => $req->get('login_id'),
+            "id" => $req->get('id')
+        ];
+        $address = Address::addressUpdate($params);
+        if ($address){
+            return $address;
+        }
+    }
+
+    public function delAddress(Request $req) {
+        Address::addressDel($req->get('id'));
+        return 1;
     }
 }
