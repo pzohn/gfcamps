@@ -103,3 +103,11 @@ Route::post('/delAddress', 'UserController@delAddress');
 
 Route::post('/makeTrades', 'CampactivityController@makeTrades');
 
+Route::post('/certInsert', 'CertController@certInsert');
+
+Route::post('/certsSelect', 'CertController@certsSelect');
+
+Route::post('/certdelete', 'CertController@certdelete');
+
+Route::post('/certupdate', 'CertController@certupdate');
+
