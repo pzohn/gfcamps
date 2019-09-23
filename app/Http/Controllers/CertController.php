@@ -31,11 +31,11 @@ class CertController extends Controller
         $certsTmp = [];
         foreach ($certs as $k => $v) {
             $shopping = Campactivity::GetCampactivityById($v->shopping_id);
-            $wx_id = Wxinfo::GetWxinfoById($shopping->wx_id);
+            $wx_info = Wxinfo::GetWxinfoById($shopping->wx_id);
             $certsTmp[] = [
             "shoppingid" => $shopping->id,
             "name" => $shopping->name,
-            "title_pic" => Image::GetImageUrl($wx_id->title_id),
+            "title_pic" => Image::GetImageUrl($wx_info->title_id),
             "price" => $shopping->price,
             "count" => $v->count,
             "id" => $v->id
