@@ -9,6 +9,7 @@ use App\Models\Trade;
 use App\Models\Campactivity;
 use App\Models\Wxinfo;
 use App\Models\Image;
+use App\Models\Childtrade;
 
 
 class PayController extends Controller
@@ -51,7 +52,7 @@ class PayController extends Controller
                     'openid' => $openid,
                     'out_trade_no'=> $this->createTradeNo(),
                     'spbill_create_ip' => $req->getClientIp(),
-                    'total_fee' => $campactivity->charge * 100,
+                    'total_fee' => $campactivity->charge * 100 * $req->get('num'),
                     'trade_type' => "JSAPI",
                     ];
 
@@ -93,10 +94,16 @@ class PayController extends Controller
                     'out_trade_no' => $params["out_trade_no"],
                     'body' => $params["body"],
                     'detail_id' => $req->get('detail_id'),
-                    'total_fee' => $params["total_fee"] * 0.01,
+                    'total_fee' => $params["total_fee"] * 0.01  * $req->get('num'),
                     'phone' => $req->get('phone')
                  ];
-                 Trade::payInsert($trade);
+                 $tradeNew = Trade::payInsert($trade);
+                 $childtrade = [
+                    'shopping_id' => $req->get('detail_id'),
+                    'num' => $req->get('num'),
+                    'trade_id' => $tradeNew->id
+                 ];
+                 $childtrade = Childtrade::payInsert($childtrade);
                  $resultPay = GuzzleHttp:: postXml($urlPay, $data);
                  $decode = $this->decodeXml($resultPay);
                  if ($decode["result_code"] == "SUCCESS")
