@@ -37,7 +37,7 @@ class  Cert extends Model {
     }
 
     public static function certupdate($id,$count) {
-        $cert = Cert::where("id", $id)->get();
+        $cert = Cert::where("id", $id)->first();
         if ($cert) {
             $cert->count = $count;
             $cert->update();
