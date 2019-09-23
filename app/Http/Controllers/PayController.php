@@ -94,7 +94,7 @@ class PayController extends Controller
                     'out_trade_no' => $params["out_trade_no"],
                     'body' => $params["body"],
                     'detail_id' => $req->get('detail_id'),
-                    'total_fee' => $params["total_fee"] * 0.01  * $req->get('num'),
+                    'total_fee' => $params["total_fee"] * 0.01,
                     'phone' => $req->get('phone')
                  ];
                  $tradeNew = Trade::payInsert($trade);
