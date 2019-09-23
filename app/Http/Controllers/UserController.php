@@ -159,6 +159,13 @@ class UserController extends Controller
         }
     }
 
+    public function getAddressById(Request $req) {
+        $address = Address::GetAddressById($req->get('id'));
+        if ($address){
+            return $address;
+        }
+    }
+
     public function insertAddress(Request $req) {
         $params = [
             "name" => $req->get('name'),

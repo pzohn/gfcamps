@@ -93,6 +93,8 @@ Route::post('/useUpdate', 'PayController@useUpdate');
 
 Route::post('/getAddress', 'UserController@getAddress');
 
+Route::post('/getAddressById', 'UserController@getAddressById');
+
 Route::post('/insertAddress', 'UserController@insertAddress');
 
 Route::post('/updateAddress', 'UserController@updateAddress');

@@ -14,6 +14,13 @@ class  Address extends Model {
         }
     }
 
+    public static function GetAddressById($id) {
+        $address = Address::where("id", $id)->first();
+        if ($address) {
+            return $address;
+        }
+    }
+
     public static function addressInsert($params) {
         $address = new self;
         $address->name = array_get($params,"name");
