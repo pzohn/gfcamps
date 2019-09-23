@@ -10,6 +10,8 @@ use App\Models\Campactivity;
 use App\Models\Wxinfo;
 use App\Models\Image;
 use App\Models\Childtrade;
+use App\Models\SendAddress;
+use App\Models\Address;
 
 
 class PayController extends Controller
@@ -103,7 +105,8 @@ class PayController extends Controller
                     'num' => $req->get('num'),
                     'trade_id' => $tradeNew->id
                  ];
-                 $childtrade = Childtrade::payInsert($childtrade);
+                 Childtrade::payInsert($childtrade);
+                 $this->insertAddress($req->get('address_id'),$tradeNew->id);
                  $resultPay = GuzzleHttp:: postXml($urlPay, $data);
                  $decode = $this->decodeXml($resultPay);
                  if ($decode["result_code"] == "SUCCESS")
@@ -469,5 +472,19 @@ class PayController extends Controller
         if ($trade) {
             return  $trade;
         }
+    }
+
+    protected function insertAddress($id,$trade_id) {
+        $address = Address::GetAddressById($id);
+        $params =[
+            'name' => $address->name,
+            'phone' => $address->phone,
+            'province' => $address->province,
+            'city' => $address->city,
+            'area' => $address->area,
+            'detail' => $address->detail, 
+            'trade_id' => $trade_id
+        ];
+        SendAddress::addressInsert($params);
     }
 }
