@@ -8,22 +8,22 @@ class  SendAddress extends Model {
     public $timestamps = false;
 
     public static function GetAddress($id) {
-        $address = Address::where("trade_id", $id)->first();
-        if ($address) {
-            return $address;
+        $sendAddress = SendAddress::where("trade_id", $id)->first();
+        if ($sendAddress) {
+            return $sendAddress;
         }
     }
 
     public static function addressInsert($params) {
-        $address = new self;
-        $address->name = array_get($params,"name");
-        $address->phone = array_get($params,"phone");
-        $address->province = array_get($params,"province");
-        $address->city = array_get($params,"city");
-        $address->area = array_get($params,"area");
-        $address->trade_id = array_get($params,"trade_id");
-        $address->detail = array_get($params,"detail");
-        $address->save();
-        return $address;
+        $sendAddress = new self;
+        $sendAddress->name = array_get($params,"name");
+        $sendAddress->phone = array_get($params,"phone");
+        $sendAddress->province = array_get($params,"province");
+        $sendAddress->city = array_get($params,"city");
+        $sendAddress->area = array_get($params,"area");
+        $sendAddress->trade_id = array_get($params,"trade_id");
+        $sendAddress->detail = array_get($params,"detail");
+        $sendAddress->save();
+        return $sendAddress;
     }
 }
