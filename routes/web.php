@@ -99,5 +99,5 @@ Route::post('/updateAddress', 'UserController@updateAddress');
 
 Route::post('/delAddress', 'UserController@delAddress');
 
-Route::post('/makeTrades', 'CampactivityController@delAdmakeTradesdress');
+Route::post('/makeTrades', 'CampactivityController@makeTrades');
 
