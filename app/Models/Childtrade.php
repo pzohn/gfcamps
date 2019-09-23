@@ -4,7 +4,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class  Childtrade extends Model {
-        
+    
+    public $timestamps = false;
+    
     public static function payInsert($params) {
 
         $childtrade = new self;
