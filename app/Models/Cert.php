@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class  Cert extends Model {
   
     public $timestamps = false;
-    
+
     public static function certInsert($params) {
 
         $cert = new self;
@@ -40,7 +40,7 @@ class  Cert extends Model {
         $cert = Cert::where("id", $id)->get();
         if ($cert) {
             $cert->count = $count;
-            $cert->save();
+            $cert->update();
             return $cert;
         }
     }
