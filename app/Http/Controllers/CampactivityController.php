@@ -18,6 +18,7 @@ use App\Models\Campimage;
 use App\Models\Zizhiimage;
 use App\Models\Wxinfo;
 use App\Models\Ninesquare;
+use App\Models\Address;
 
 
 class CampactivityController extends Controller
@@ -361,6 +362,20 @@ class CampactivityController extends Controller
             "list_pics" => $this->getUrls($wxinfo->list_ids),
             "know_pics" => $this->getUrls($wxinfo->know_ids),
             "title_pic" => Image::GetImageUrl($wxinfo->title_id)
+        ];
+    }
+
+    public function makeTrades(Request $req) {
+        $id = $req->get('id');
+        $activity_id = $req->get('activity_id');
+        $activity = Campactivity::GetCampactivityById($activity_id);
+        $address = Address::GetAddress($req->get('login_id'));
+        $wxinfo = Wxinfo::GetWxinfoById($id);
+        return [
+            "name" => $activity->name,
+            "charge" => $activity->charge,
+            "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+            "address" => $address
         ];
     }
 
