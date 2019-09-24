@@ -10,7 +10,7 @@ class  Forumitem extends Model {
         $forumitem->userid = array_get($params,"userid");
         $forumitem->content = array_get($params,"content");
         $forumitem->article_id = array_get($params,"article_id");
-        $forumimage->save();
-        return $forumimage;
+        $forumitem->save();
+        return $forumitem;
     }
 }
