@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Member;
 use Qcloud\Sms\SmsSingleSender;
 use App\Models\Address;
+use App\Libs\GuzzleHttp;
 
 class UserController extends Controller
 {
@@ -202,5 +203,17 @@ class UserController extends Controller
     public function delAddress(Request $req) {
         Address::addressDel($req->get('id'));
         return 1;
+    }
+
+    public function getWxUser(Request $req) {
+        $urlLogin = "https://api.weixin.qq.com/sns/jscode2session";
+        $paramsLogin = [
+        	'appid' => "wx25428722a46f46c4",
+            'secret' => "13accb5ad3afe802ed10360210b52633",
+            'js_code' => $req->get('js_code'),
+            'grant_type' => "authorization_code",
+        ];
+        $resultLogin = GuzzleHttp::guzzleGet($urlLogin, $paramsLogin);
+        return $resultLogin;
     }
 }

@@ -111,3 +111,5 @@ Route::post('/certdelete', 'CertController@certdelete');
 
 Route::post('/certupdate', 'CertController@certupdate');
 
+Route::post('/getWxUser', 'UserController@getWxUser');
+
