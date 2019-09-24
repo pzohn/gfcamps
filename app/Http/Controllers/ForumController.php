@@ -135,6 +135,6 @@ class ForumController extends Controller
             "content" => $req->get('content'),
             "article_id" => $req->get('article_id')
         ];
-        Forumitem::insertItem($param);
+        return Forumitem::insertItem($param);
     }
 }
