@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Postlist;
 use App\Models\Postitem;
 use App\Models\Forumimage;
+use App\Models\Forumitem;
 
 class ForumController extends Controller
 {
@@ -126,5 +127,14 @@ class ForumController extends Controller
             ];
         }
         return $postlistsTmp;
+    }
+
+    public function newForum(Request $req) {
+        $param= [
+            "userid" => $req->get('openid'),
+            "content" => $req->get('content'),
+            "article_id" => $req->get('article_id')
+        ];
+        Forumitem::insertItem($param);
     }
 }
