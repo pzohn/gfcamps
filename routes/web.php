@@ -113,3 +113,5 @@ Route::post('/certupdate', 'CertController@certupdate');
 
 Route::post('/getWxUser', 'UserController@getWxUser');
 
+Route::post('/newForum', 'ForumController@newForum');
+
