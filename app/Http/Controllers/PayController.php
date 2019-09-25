@@ -561,7 +561,7 @@ class PayController extends Controller
                  $trade = [
                     'out_trade_no' => $params["out_trade_no"],
                     'body' => $params["body"],
-                    'detail_id' => $req->get('detail_id'),
+                    'detail_id' => 0,
                     'total_fee' => $params["total_fee"] * 0.01,
                     'phone' => $req->get('phone')
                  ];
