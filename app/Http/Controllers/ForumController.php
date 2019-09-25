@@ -7,6 +7,7 @@ use App\Models\Postlist;
 use App\Models\Postitem;
 use App\Models\Forumimage;
 use App\Models\Forumitem;
+use App\Models\Wxuser;
 
 class ForumController extends Controller
 {
@@ -135,6 +136,37 @@ class ForumController extends Controller
             "content" => $req->get('content'),
             "article_id" => $req->get('article_id')
         ];
-        return Forumitem::insertItem($param);
+        Forumitem::insertItem($param);
+        $forumitems = Forumitem::getItemsByUseId($req->get('article_id'));
+        $forumitemsTmp = [];
+        foreach ($forumitems as $k => $v) {
+            $wxuser = Wxuser::getInfo($v->userid);
+            $forumitemsTmp[] = [
+                "id" => $v->id,
+                "content" => $v->content,
+                "article_id" => $v->article_id,
+                "datetime" => $v->created_at->format('Y-m-d H:i:s'),
+                "headerurl" => $wxuser->url,
+                "nickname" => $wxuser->nikename
+            ];
+        }
+        return $forumitemsTmp;
     }
+
+    public function getForums(Request $req) {
+        $forumitems = Forumitem::getItemsByUseId($req->get('article_id'));
+        $forumitemsTmp = [];
+        foreach ($forumitems as $k => $v) {
+            $wxuser = Wxuser::getInfo($v->userid);
+            $forumitemsTmp[] = [
+                "id" => $v->id,
+                "content" => $v->content,
+                "article_id" => $v->article_id,
+                "datetime" => $v->created_at->format('Y-m-d H:i:s'),
+                "headerurl" => $wxuser->url,
+                "nickname" => $wxuser->nikename
+            ];
+        }
+        return $forumitemsTmp;
+    } 
 }

@@ -7,6 +7,7 @@ use App\Models\Member;
 use Qcloud\Sms\SmsSingleSender;
 use App\Models\Address;
 use App\Libs\GuzzleHttp;
+use App\Models\Wxuser;
 
 class UserController extends Controller
 {
@@ -215,5 +216,20 @@ class UserController extends Controller
         ];
         $resultLogin = GuzzleHttp::guzzleGet($urlLogin, $paramsLogin);
         return $resultLogin;
+    }
+
+    public function makeWxUser(Request $req) {
+        $params = [
+            'openid' => $req->get('openid'),
+            'nikename' => $req->get('nikename'),
+            'url' => $req->get('url')
+        ];
+        $wxuser = Wxuser::getInfo($req->get('openid'));
+        if ($wxuser){
+            $wxuser = Wxuser::updateInfo($params);
+        }else{
+            $wxuser = Wxuser::insertInfo($params);
+        }
+        return $wxuser;
     }
 }
