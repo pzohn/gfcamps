@@ -14,8 +14,8 @@ class  Forumitem extends Model {
         return $forumitem;
     }
 
-    public static function getItemsByUseId($userid) {
-        $forumitems = Forumitem::where("userid", $userid)->orderBy('updated_at', 'desc')->get();
+    public static function getItemsByUseId($article_id) {
+        $forumitems = Forumitem::where("article_id", $article_id)->orderBy('updated_at', 'desc')->get();
         return $forumitems;
     }
 }
