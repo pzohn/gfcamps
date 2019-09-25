@@ -487,4 +487,130 @@ class PayController extends Controller
         ];
         SendAddress::addressInsert($params);
     }
+
+    public function onPayForCert(Request $req) {
+
+        $urlLogin = "https://api.weixin.qq.com/sns/jscode2session";
+        $paramsLogin = [
+        	'appid' => "wx25428722a46f46c4",
+            'secret' => "13accb5ad3afe802ed10360210b52633",
+            'js_code' => $req->get('js_code'),
+            'grant_type' => "authorization_code",
+        ];
+        try {
+            $resultLogin = GuzzleHttp::guzzleGet($urlLogin, $paramsLogin);
+            if (isset($resultLogin['errcode'])) {
+                return [
+                    "errcode" => $resultLogin['errcode'],
+                    "errmsg" => "无效登录信息",
+                ];
+            }
+            $openid = $resultLogin['openid'];
+            $session_key = $resultLogin['session_key'];
+
+            if ($openid && $session_key) {
+                $campactivity = Campactivity::GetCampactivityById($req->get('detail_id'));
+                $urlPay = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+                $params = [
+                    'appid' => $paramsLogin["appid"],
+                    'body' => $req->get('body'),
+                    'mch_id' => "1547227511",
+                    'nonce_str' => $this->createRand(32),
+                    'notify_url' => "https://www.gfcamps.cn/onPayBack",
+                    'openid' => $openid,
+                    'out_trade_no'=> $this->createTradeNo(),
+                    'spbill_create_ip' => $req->getClientIp(),
+                    'total_fee' => $req->get('charge') * 100,
+                    'trade_type' => "JSAPI",
+                    ];
+
+                    ksort($params);
+
+                    $stringA = "";
+                    foreach ($params as $k => $v) {
+                        $stringA = $stringA . "&" . $k . "=" . $v;
+                    }
+                    $stringA = ltrim($stringA, "&");
+
+                    $appid = $params["appid"];
+                    $mch_id = $params["mch_id"];
+                    $nonce_str = $params["nonce_str"];
+                    $body = $params["body"];
+                    $out_trade_no = $params["out_trade_no"];
+                    $total_fee = $params["total_fee"];
+                    $spbill_create_ip = $req->getClientIp();
+                    $notify_url = $params["notify_url"];
+                    $trade_type = $params["trade_type"];
+                    $sign = $this->createSign($stringA);
+
+
+                    $data = "<xml>
+                    <appid>$appid</appid>
+                    <body>$body</body>
+                    <mch_id>$mch_id</mch_id>
+                    <nonce_str>$nonce_str</nonce_str>
+                    <notify_url>$notify_url</notify_url>
+                    <openid>$openid</openid>
+                    <out_trade_no>$out_trade_no</out_trade_no>
+                    <spbill_create_ip>$spbill_create_ip</spbill_create_ip>
+                    <total_fee>$total_fee</total_fee>
+                    <trade_type>$trade_type</trade_type>
+                    <sign>$sign</sign>
+                 </xml>";
+                 \Log::info("-----------pay", [$data]);
+                 $trade = [
+                    'out_trade_no' => $params["out_trade_no"],
+                    'body' => $params["body"],
+                    'detail_id' => $req->get('detail_id'),
+                    'total_fee' => $params["total_fee"] * 0.01,
+                    'phone' => $req->get('phone')
+                 ];
+                 $tradeNew = Trade::payInsert($trade);
+                 $this->certsInsert($req->get('certInfo'), $tradeNew->id);
+                 $this->insertAddress($req->get('address_id'),$tradeNew->id);
+                 $resultPay = GuzzleHttp:: postXml($urlPay, $data);
+                 $decode = $this->decodeXml($resultPay);
+                 if ($decode["result_code"] == "SUCCESS")
+                 {
+                    $sian_time = (string)time();
+                    $resign = $this->createReSign($decode,$sian_time);
+                    return $this->wxBack($decode,$resign,$sian_time);
+                 }
+                 else if($decode["result_code"] == "FAIL")
+                 {
+                     return [
+                        "errcode" => $decode["err_code"],
+                        "errmsg" => $decode["err_code_des"],
+                     ];
+                 }
+
+            }
+
+        } catch (\Exception $e) {
+            // 异常处理
+            \Log::info("----------", [$e]);
+            return [
+                "code" => $e->getCode(),
+                "msg"  => $e->getMessage(),
+                "data" => [],
+            ];
+        }
+    }
+
+    protected function certsInsert($certInfo,$trade_id) {
+        $arryCert = preg_split("/@/",$certInfo);
+        $charge = 0;
+        foreach ($arryCert as $v) {
+            $item = $v;
+            $arryItem = preg_split("/,/",$certInfo);
+            $id = $arryItem[0];
+            $num = $arryItem[1];
+            $childtrade = [
+                'shopping_id' => $id,
+                'num' => $num,
+                'trade_id' => $trade_id
+             ];
+            Childtrade::payInsert($childtrade);
+        }
+    }
 }
