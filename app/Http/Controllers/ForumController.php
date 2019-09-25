@@ -140,7 +140,7 @@ class ForumController extends Controller
         $forumitems = Forumitem::getItemsByUseId($req->get('article_id'));
         $forumitemsTmp = [];
         foreach ($forumitems as $k => $v) {
-            $wxuser = Wxuser::getInfo($v->userid);
+            $wxuser = Wxuser::getInfo($v->openid);
             $forumitemsTmp[] = [
                 "id" => $v->id,
                 "content" => $v->content,
