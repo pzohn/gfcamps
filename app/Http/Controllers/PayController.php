@@ -602,7 +602,7 @@ class PayController extends Controller
         $charge = 0;
         foreach ($arryCert as $v) {
             $item = $v;
-            $arryItem = preg_split("/,/",$certInfo);
+            $arryItem = preg_split("/,/",$item);
             $id = $arryItem[0];
             $num = $arryItem[1];
             $childtrade = [
