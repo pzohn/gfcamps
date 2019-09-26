@@ -41,6 +41,5 @@ class  Childtrade extends Model {
         if ($childtrades) {
             return $childtrades;
         }
-        return 0;
     }
 }
