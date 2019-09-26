@@ -381,18 +381,17 @@ class PayController extends Controller
                             "charge" => $activity->charge
                         ]; 
                     }
-                    $tradesTmp[] = [$childtradesTmp];
                 }
 
-                // $tradesTmp[] = [
-                // "out_trade_no" => $v->out_trade_no,
-                // "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-                // "date" => $v->updated_at->format('Y-m-d H:i:s'),
-                // "trade_id" => $v->id,
-                // "charge" => $v->total_fee,
-                // "count" => $count,
-                // "detail" => $childtradesTmp
-                // ];
+                $tradesTmp[] = [
+                "out_trade_no" => $v->out_trade_no,
+                "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                "date" => $v->updated_at->format('Y-m-d H:i:s'),
+                "trade_id" => $v->id,
+                "charge" => $v->total_fee,
+                "count" => $count,
+                "detail" => $childtradesTmp
+                ];
             }
             return  $tradesTmp;
         }
