@@ -37,10 +37,9 @@ class  Childtrade extends Model {
     }
 
     public static function paySelectById($id) {
-        $childtrades = Childtrade::where("trade_id", $id)->first();
+        $childtrades = Childtrade::where("trade_id", $id)->get();
         if ($childtrades) {
             return $childtrades;
         }
-        return 0;
     }
 }
