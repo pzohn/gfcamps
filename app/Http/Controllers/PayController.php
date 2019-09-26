@@ -360,6 +360,8 @@ class PayController extends Controller
     // }
 
     public function getOrderAll(Request $req) {
+        $childtrades = Childtrade::paySelectById($req->get('phone'));
+        return $childtrades;
         $phone = $req->get('phone');
         $trades = Trade::getOrderAll($phone);
         if ($trades){
