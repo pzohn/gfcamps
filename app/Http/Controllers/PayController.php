@@ -360,8 +360,6 @@ class PayController extends Controller
     // }
 
     public function getOrderAll(Request $req) {
-        $childtrades = Childtrade::paySelectById($req->get('phone'));
-        return $childtrades;
         $phone = $req->get('phone');
         $trades = Trade::getOrderAll($phone);
         if ($trades){
@@ -369,35 +367,35 @@ class PayController extends Controller
             foreach ($trades as $k => $v) {
                 $count = 0;
                 $childtrades = Childtrade::paySelectById($v->id);
-                if ($childtrades){
-                    $childtradesTmp = [];
-                    foreach ($childtrades as $k1 => $v1) {
-                        // $count += 1;
-                        // $activity = Campactivity::GetCampactivityById($v1->shopping_id);
-                        // $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
-                        $childtradesTmp[] = [
-                            // "name" => $activity->name,
-                            // "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-                            // "wx_id" => $wxinfo->id,
-                            // "activity_id" => $activity->id,
-                            // "charge" => $activity->charge
-                            $v1,
-                            $v
-                        ]; 
-                    }
-                }
+                // if ($childtrades){
+                //     $childtradesTmp = [];
+                //     foreach ($childtrades as $k1 => $v1) {
+                //         $count += 1;
+                //         $activity = Campactivity::GetCampactivityById($v1->shopping_id);
+                //         $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+                //         $childtradesTmp[] = [
+                //             "name" => $activity->name,
+                //             "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                //             "wx_id" => $wxinfo->id,
+                //             "activity_id" => $activity->id,
+                //             "charge" => $activity->charge
+                //         ]; 
+                //     }
+                // }
 
-            //     $tradesTmp[] = [
-            //     "out_trade_no" => $v->out_trade_no,
-            //     "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-            //     "date" => $v->updated_at->format('Y-m-d H:i:s'),
-            //     "trade_id" => $v->id,
-            //     "charge" => $v->total_fee,
-            //     "count" => $count,
-            //     "detail" => $childtradesTmp
-            //     ];
-             }
-            return  $childtradesTmp;
+                $tradesTmp[] = [
+                // "out_trade_no" => $v->out_trade_no,
+                // "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                // "date" => $v->updated_at->format('Y-m-d H:i:s'),
+                // "trade_id" => $v->id,
+                // "charge" => $v->total_fee,
+                // "count" => $count,
+                // "detail" => $childtradesTmp
+                $v,
+                $childtrades
+                ];
+            }
+            return  $tradesTmp;
         }
     }
 
