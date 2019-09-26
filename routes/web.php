@@ -85,9 +85,9 @@ Route::post('/getOrderAll', 'PayController@getOrderAll');
 
 Route::post('/getOrderUnPay', 'PayController@getOrderUnPay');
 
-Route::post('/getOrderUnUse', 'PayController@getOrderUnUse');
+Route::post('/getOrderUnsend', 'PayController@getOrderUnsend');
 
-Route::post('/getOrderUse', 'PayController@getOrderUse');
+Route::post('/getOrderSend', 'PayController@getOrderSend');
 
 Route::post('/hideOrder', 'PayController@hideOrder');
 
