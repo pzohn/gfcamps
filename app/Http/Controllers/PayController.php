@@ -369,8 +369,8 @@ class PayController extends Controller
                 $childtrades = Childtrade::paySelectById($v->id);
                 $childtradesTmp = [];
                 foreach ($childtrades as $k1 => $v1) {
-                    // $count += 1;
-                    // $activity = Campactivity::GetCampactivityById($v1->shopping_id);
+                    $count += 1;
+                    $activity = Campactivity::GetCampactivityById($v1->shopping_id);
                     // $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
                     // $childtradesTmp[] = [
                     //     "name" => $activity->name,
@@ -379,7 +379,7 @@ class PayController extends Controller
                     //     "activity_id" => $activity->id,
                     //     "charge" => $activity->charge
                     // ]; 
-                    $tradesTmp[] = [$v1->shopping_id];
+                    $tradesTmp[] = [$activity];
                 }
 
                 // $tradesTmp[] = [
