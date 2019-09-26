@@ -379,7 +379,7 @@ class PayController extends Controller
                     //     "activity_id" => $activity->id,
                     //     "charge" => $activity->charge
                     // ]; 
-                    $tradesTmp[] = [$v1];
+                    $tradesTmp[] = [$v1->shopping_id];
                 }
 
                 // $tradesTmp[] = [
