@@ -379,7 +379,8 @@ class PayController extends Controller
                             // "wx_id" => $wxinfo->id,
                             // "activity_id" => $activity->id,
                             // "charge" => $activity->charge
-                            $v1
+                            $v1,
+                            $v
                         ]; 
                     }
                 }
