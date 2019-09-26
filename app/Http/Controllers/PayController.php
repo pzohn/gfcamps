@@ -392,7 +392,10 @@ class PayController extends Controller
                 // "count" => $count,
                 // "detail" => $childtradesTmp
                 // ];
-                $tradesTmp[] = [$childtrades];
+                if ($childtrades){
+                    $tradesTmp[] = [$childtrades];
+                }
+                
             }
             return  $tradesTmp;
         }
