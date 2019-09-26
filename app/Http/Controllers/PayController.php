@@ -365,8 +365,8 @@ class PayController extends Controller
         if ($trades){
             $tradesTmp = [];
             foreach ($trades as $k => $v) {
-                // $count = 0;
-                // $childtrades = Childtrade::paySelectById($v->id);
+                $count = 0;
+                $childtrades = Childtrade::paySelectById($v->id);
                 // if ($childtrades){
                 //     $childtradesTmp = [];
                 //     foreach ($childtrades as $k1 => $v1) {
@@ -391,7 +391,7 @@ class PayController extends Controller
                 // "charge" => $v->total_fee,
                 // "count" => $count,
                 // "detail" => $childtradesTmp
-                $v
+                $childtrades
                 ];
             }
             return  $tradesTmp;
