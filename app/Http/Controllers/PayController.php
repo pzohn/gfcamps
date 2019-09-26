@@ -362,6 +362,7 @@ class PayController extends Controller
     public function getOrderAll(Request $req) {
         $phone = $req->get('phone');
         $trades = Trade::getOrderAll($phone);
+        return $trades;
         if ($trades){
             $tradesTmp = [];
             foreach ($trades as $k => $v) {
