@@ -371,15 +371,15 @@ class PayController extends Controller
                 foreach ($childtrades as $k1 => $v1) {
                     $count += 1;
                     $activity = Campactivity::GetCampactivityById($v1->shopping_id);
-                    // $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
-                    // $childtradesTmp[] = [
-                    //     "name" => $activity->name,
-                    //     "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-                    //     "wx_id" => $wxinfo->id,
-                    //     "activity_id" => $activity->id,
-                    //     "charge" => $activity->charge
-                    // ]; 
-                    $tradesTmp[] = [$activity];
+                    $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+                    $childtradesTmp[] = [
+                        "name" => $activity->name,
+                        "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                        "wx_id" => $wxinfo->id,
+                        "activity_id" => $activity->id,
+                        "charge" => $activity->charge
+                    ]; 
+                    $tradesTmp[] = [$childtradesTmp];
                 }
 
                 // $tradesTmp[] = [
