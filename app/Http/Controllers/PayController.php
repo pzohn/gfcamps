@@ -334,25 +334,61 @@ class PayController extends Controller
         ];
     }
 
+    // public function getOrderAll(Request $req) {
+    //     $phone = $req->get('phone');
+    //     $trades = Trade::getOrderAll($phone );
+    //     if ($trades){
+    //         $tradesTmp = [];
+    //         foreach ($trades as $k => $v) {
+    //             $activity = Campactivity::GetCampactivityById($v->detail_id);
+    //             $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+    //             $tradesTmp[] = [
+    //             "name" => $v->body,
+    //             "out_trade_no" => $v->out_trade_no,
+    //             "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+    //             "status" => $this->getStatus($v->pay_status,$v->use_status),
+    //             "date" => $v->updated_at->format('Y-m-d H:i:s'),
+    //             "color" => $this->getColor($v->pay_status,$v->use_status),
+    //             "id" => $wxinfo->id,
+    //             "activity_id" => $activity->id,
+    //             "trade_id" => $v->id,
+    //             "charge" => $v->total_fee
+    //             ];
+    //         }
+    //         return  $tradesTmp;
+    //     }
+    // }
+
     public function getOrderAll(Request $req) {
         $phone = $req->get('phone');
-        $trades = Trade::getOrderAll($phone );
+        $trades = Trade::getOrderAll($phone);
         if ($trades){
             $tradesTmp = [];
             foreach ($trades as $k => $v) {
-                $activity = Campactivity::GetCampactivityById($v->detail_id);
-                $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+                $childtrades = Childtrade::paySelectById($v->id);
+                $childtradesTmp = [];
+                $count = 0;
+                foreach ($childtrades as $k1 => $v1) {
+                    $count += 1;
+                    $activity = Campactivity::GetCampactivityById($v1->shopping_id);
+                    $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+                    $childtradesTmp[] = [
+                        "name" => $activity->name,
+                        "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                        "wx_id" => $wxinfo->id,
+                        "activity_id" => $activity->id,
+                        "charge" => $activity->charge
+                    ]; 
+                }
+
                 $tradesTmp[] = [
-                "name" => $v->body,
                 "out_trade_no" => $v->out_trade_no,
                 "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-                "status" => $this->getStatus($v->pay_status,$v->use_status),
                 "date" => $v->updated_at->format('Y-m-d H:i:s'),
-                "color" => $this->getColor($v->pay_status,$v->use_status),
-                "id" => $wxinfo->id,
-                "activity_id" => $activity->id,
                 "trade_id" => $v->id,
-                "charge" => $v->total_fee
+                "charge" => $v->total_fee,
+                "count" => $count,
+                "detail" => $childtradesTmp
                 ];
             }
             return  $tradesTmp;
