@@ -11,8 +11,6 @@ class  Wxinfo extends Model {
         $wxinfo = Wxinfo::where("id", $id)->first();
         if ($wxinfo) {
             return $wxinfo;
-        }else{
-            return 0;
         }
     }
 }

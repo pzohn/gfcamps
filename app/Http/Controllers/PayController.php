@@ -375,8 +375,9 @@ class PayController extends Controller
                         $count += 1;
                         $childtradesTmp[] = [
                             "name" => $activity->name,
-                            "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-                            "wx_id" => $wxinfo->id,
+                            // "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                            // "wx_id" => $wxinfo->id,
+                            $wxinfo,
                             "activity_id" => $activity->id,
                             "charge" => $activity->charge
                         ]; 
