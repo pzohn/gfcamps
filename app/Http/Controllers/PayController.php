@@ -365,20 +365,22 @@ class PayController extends Controller
         if ($trades){
             $tradesTmp = [];
             foreach ($trades as $k => $v) {
-                $childtrades = Childtrade::paySelectById($v->id);
-                $childtradesTmp = [];
                 $count = 0;
-                foreach ($childtrades as $k1 => $v1) {
-                    $count += 1;
-                    $activity = Campactivity::GetCampactivityById($v1->shopping_id);
-                    $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
-                    $childtradesTmp[] = [
-                        "name" => $activity->name,
-                        "title_pic" => Image::GetImageUrl($wxinfo->title_id),
-                        "wx_id" => $wxinfo->id,
-                        "activity_id" => $activity->id,
-                        "charge" => $activity->charge
-                    ]; 
+                $childtrades = Childtrade::paySelectById($v->id);
+                if ($childtrades){
+                    $childtradesTmp = [];
+                    foreach ($childtrades as $k1 => $v1) {
+                        $count += 1;
+                        $activity = Campactivity::GetCampactivityById($v1->shopping_id);
+                        $wxinfo = Wxinfo::GetWxinfoById($activity->wx_id);
+                        $childtradesTmp[] = [
+                            "name" => $activity->name,
+                            "title_pic" => Image::GetImageUrl($wxinfo->title_id),
+                            "wx_id" => $wxinfo->id,
+                            "activity_id" => $activity->id,
+                            "charge" => $activity->charge
+                        ]; 
+                    }
                 }
 
                 $tradesTmp[] = [
