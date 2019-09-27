@@ -368,7 +368,7 @@ class PayController extends Controller
                         "count" => $count,
                         "detail" => $childtradesTmp,
                         "address" => SendAddress::GetAddress($v->id),
-                        "status" => 1                       
+                        "status" => $this->getStatus($v->pay_status,$v->use_status)                       
                     ];
                 }
             }
@@ -409,7 +409,7 @@ class PayController extends Controller
                         "charge" => $v->total_fee,
                         "count" => $count,
                         "detail" => $childtradesTmp,
-                        "status" => 2
+                        "status" => '待付款'
                         ];
                 }
             }
@@ -451,7 +451,7 @@ class PayController extends Controller
                         "charge" => $v->total_fee,
                         "count" => $count,
                         "detail" => $childtradesTmp,
-                        "status" => 3
+                        "status" => '待发货'
                         ];
                 }
             }
@@ -492,7 +492,7 @@ class PayController extends Controller
                         "charge" => $v->total_fee,
                         "count" => $count,
                         "detail" => $childtradesTmp,
-                        "status" => 4
+                        "status" => '待收货'
                         ];
                 }
             }
@@ -502,12 +502,12 @@ class PayController extends Controller
 
     protected function getStatus($paystatus,$usestatus) {
         if ($paystatus == 0){
-            return '未支付';
+            return '待付款';
         }else if ($paystatus == 1){
             if ($usestatus == 0){
-                return '已支付,未使用';
+                return '待发货';
             }else if ($usestatus == 1){
-                return '已使用';
+                return '待收货';
             }
         }
     }
