@@ -366,6 +366,7 @@ class PayController extends Controller
                         "charge" => $v->total_fee,
                         "count" => $count,
                         "detail" => $childtradesTmp,
+                        "address" => SendAddress::GetAddress($v->id),
                         "status" => 1                       
                     ];
                 }
