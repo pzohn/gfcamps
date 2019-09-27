@@ -365,8 +365,9 @@ class PayController extends Controller
                         "trade_id" => $v->id,
                         "charge" => $v->total_fee,
                         "count" => $count,
-                        "detail" => $childtradesTmp
-                        ];
+                        "detail" => $childtradesTmp,
+                        "status" => 1                       
+                    ];
                 }
             }
             return  $tradesTmp;
@@ -404,7 +405,8 @@ class PayController extends Controller
                         "trade_id" => $v->id,
                         "charge" => $v->total_fee,
                         "count" => $count,
-                        "detail" => $childtradesTmp
+                        "detail" => $childtradesTmp,
+                        "status" => 2
                         ];
                 }
             }
@@ -443,7 +445,8 @@ class PayController extends Controller
                         "trade_id" => $v->id,
                         "charge" => $v->total_fee,
                         "count" => $count,
-                        "detail" => $childtradesTmp
+                        "detail" => $childtradesTmp,
+                        "status" => 3
                         ];
                 }
             }
@@ -482,7 +485,8 @@ class PayController extends Controller
                         "trade_id" => $v->id,
                         "charge" => $v->total_fee,
                         "count" => $count,
-                        "detail" => $childtradesTmp
+                        "detail" => $childtradesTmp,
+                        "status" => 4
                         ];
                 }
             }
