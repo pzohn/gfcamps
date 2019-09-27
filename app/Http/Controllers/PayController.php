@@ -395,7 +395,8 @@ class PayController extends Controller
                             "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                             "wx_id" => $wxinfo->id,
                             "activity_id" => $activity->id,
-                            "charge" => $activity->charge
+                            "charge" => $activity->charge,
+                            "num" => $v1->num
                         ]; 
                     }
                 }
@@ -435,7 +436,9 @@ class PayController extends Controller
                             "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                             "wx_id" => $wxinfo->id,
                             "activity_id" => $activity->id,
-                            "charge" => $activity->charge
+                            "charge" => $activity->charge,
+                            "num" => $v1->num
+                            
                         ]; 
                     }
                 }
@@ -475,7 +478,8 @@ class PayController extends Controller
                             "title_pic" => Image::GetImageUrl($wxinfo->title_id),
                             "wx_id" => $wxinfo->id,
                             "activity_id" => $activity->id,
-                            "charge" => $activity->charge
+                            "charge" => $activity->charge,
+                            "num" => $v1->num
                         ]; 
                     }
                 }
