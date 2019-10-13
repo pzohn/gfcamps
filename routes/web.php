@@ -120,4 +120,5 @@ Route::post('/makeWxUser', 'UserController@makeWxUser');
 Route::post('/newForum', 'ForumController@newForum');
 
 Route::post('/getForums', 'ForumController@getForums');
+Route::post('/getTest', 'TestController@getTest');
 
