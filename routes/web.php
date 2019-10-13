@@ -121,4 +121,5 @@ Route::post('/newForum', 'ForumController@newForum');
 
 Route::post('/getForums', 'ForumController@getForums');
 Route::post('/getTest', 'TestController@getTest');
+Route::post('/getTests', 'TestController@getTests');
 

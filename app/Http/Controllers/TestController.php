@@ -13,5 +13,8 @@ class TestController extends Controller
         return $test;
     }
 
-   
+    public function getTests(Request $req) {
+        $test = Test::GetTests();
+        return $test;
+    }
 }
