@@ -19,7 +19,14 @@ class TestController extends Controller
     }
 
     public function insertTests(Request $req) {
-        $test = Test::writeTest($req);
-        return $test;
+        $params_psotitem = [
+            "intvar" => $req->get('intvar'),
+            "text" => $req->get('text'),
+        ];
+        $postitem = Test::writeTest($params_psotitem);
+        if ($postitem){
+            return $postitem;
+        }
+        return 0;
     }
 }
