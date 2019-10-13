@@ -18,4 +18,13 @@ class  Test extends Model {
             return $tests;
         }
     }
+
+    public static function writeTest($params) {
+
+        $postitem = new self;
+        $postitem->intvar = array_get($params,"intvar");
+        $postitem->text = array_get($params,"text");
+        $postitem->save();
+        return $postitem;
+    }
 }

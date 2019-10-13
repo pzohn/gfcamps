@@ -17,4 +17,9 @@ class TestController extends Controller
         $test = Test::GetTests();
         return $test;
     }
+
+    public function insertTests(Request $req) {
+        $test = Test::writeTest($req);
+        return $test;
+    }
 }
