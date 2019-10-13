@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class  Test extends Model {
     
+    public $timestamps = false;
+    
     public static function GetTest($id) {
         $test = Test::where("id", $id)->first();
         if ($test) {
