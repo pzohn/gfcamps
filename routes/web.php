@@ -124,3 +124,5 @@ Route::post('/getTest', 'TestController@getTest');
 Route::post('/getTests', 'TestController@getTests');
 Route::post('/insertTests', 'TestController@insertTests');
 
+Route::post('/collectioninsert', 'CollectionController@insertOneCollectionItem');
+
