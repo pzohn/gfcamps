@@ -24,7 +24,7 @@ class CollectionController extends Controller
             "openid" => $req->get('openid'),
             "articalid" => $req->get('articalid')
         ];
-        $postitem = Collection::writeOneItem($params_psotitem);
+        $postitem = Collection::deleteOneItem($params_psotitem);
         if ($postitem){
             return $postitem;
         }
