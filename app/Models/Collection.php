@@ -20,10 +20,6 @@ class  Collection extends Model {
         $postitem->articalid = array_get($params,"articalid");
         $openid = $postitem->openid;
         $articalid = $postitem->articalid;
-        $item = Collection::where("openid", $openid)->where("articalid", $articalid)->get();
-        $item->delete();
-        return $postitem;
-
-        
+        Collection::where("openid", $openid)->where("articalid", $articalid)->delete();
     }
 }
