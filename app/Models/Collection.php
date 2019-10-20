@@ -33,4 +33,17 @@ class  Collection extends Model {
             return $items;
         }
     }
+
+    public static function GetOneItem($params) {
+
+        $postitem = new self;
+        $postitem->openid = array_get($params,"openid");
+        $postitem->articalid = array_get($params,"articalid");
+        $openid = $postitem->openid;
+        $articalid = $postitem->articalid;
+        $item = Collection::where("openid", $openid)->where("articalid", $articalid)->get();
+        if ($items) {
+            return $items;
+        }
+    }
 }

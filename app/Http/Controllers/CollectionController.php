@@ -43,4 +43,16 @@ class CollectionController extends Controller
         }
         return 0;
     }
+
+    public function getUserOneCollection(Request $req) {
+        $params_psotitem = [
+            "openid" => $req->get('openid'),
+            "articalid" => $req->get('articalid')
+        ];
+        $postitem = Collection::GetOneItem($params_psotitem);
+        if ($postitem){
+            return $postitem;
+        }
+        return 0;
+    }
 }
