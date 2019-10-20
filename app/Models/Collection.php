@@ -42,8 +42,8 @@ class  Collection extends Model {
         $openid = $postitem->openid;
         $articalid = $postitem->articalid;
         $item = Collection::where("openid", $openid)->where("articalid", $articalid)->get();
-        if ($items) {
-            return $items;
+        if ($item) {
+            return $item;
         }
     }
 }
