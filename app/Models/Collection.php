@@ -9,6 +9,10 @@ class  Collection extends Model {
         $postitem = new self;
         $postitem->openid = array_get($params,"openid");
         $postitem->articalid = array_get($params,"articalid");
+        $postitem->title = array_get($params,"title");
+        $postitem->nickname = array_get($params,"nickname");
+        $postitem->imgurls = array_get($params,"imgurls");
+        $postitem->donetime = array_get($params,"donetime");
         $postitem->save();
         return $postitem;
     }
