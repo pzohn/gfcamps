@@ -22,4 +22,11 @@ class  Collection extends Model {
         $articalid = $postitem->articalid;
         Collection::where("openid", $openid)->where("articalid", $articalid)->delete();
     }
+
+    public static function getUserItems($openid) {
+        $items = Collection::where("openid", $openid)->first();
+        if ($items) {
+            return $items;
+        }
+    }
 }

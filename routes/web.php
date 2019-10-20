@@ -126,4 +126,4 @@ Route::post('/insertTests', 'TestController@insertTests');
 
 Route::post('/collectioninsert', 'CollectionController@insertOneCollectionItem');
 Route::post('/collectiondelete', 'CollectionController@deleteOneCollectionItem');
-
+Route::post('/getusercollections', 'CollectionController@getUserCollections');

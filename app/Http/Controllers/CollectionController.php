@@ -30,8 +30,13 @@ class CollectionController extends Controller
         }
         return 0;
     }
-
-
-
     
+    public function getUserCollections(Request $req) {
+        $openid = $req->get('openid');
+        $postitem = Collection::getUserItems($openid);
+        if ($postitem){
+            return $postitem;
+        }
+        return 0;
+    }
 }
