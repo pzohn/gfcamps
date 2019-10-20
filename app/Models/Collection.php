@@ -24,7 +24,7 @@ class  Collection extends Model {
     }
 
     public static function getUserItems($openid) {
-        $items = Collection::where("openid", $openid)->first();
+        $items = Collection::where("openid", $openid)->get();
         if ($items) {
             return $items;
         }
