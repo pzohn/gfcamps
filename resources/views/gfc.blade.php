@@ -7,10 +7,7 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>未来营</title>
-    <script type="text/javascript" src="jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+  <title>GFC品牌战略</title>
   <style type="text/css">
     html{width:90%;height:100%;margin:0px;padding:0px;}
     body{
@@ -19,21 +16,8 @@
     li{
       margin: 0 10px;
     }
-    .jumbotron{
-      margin-bottom: 0px !important;
-      padding-top: 10px !important;
-      padding-bottom: 10px !important;
-      background: #669900;
-      border-radius: 0px;
-    }
-    .lunboimg
-    {
-      width:auto;height:auto;max-width:100%;max-height:90%;
-    }
-    .lunboimg1
-    {
-      width:auto;height:auto;max-width:100%;max-height:100%;
-    }
+
+
 
     .navbar .nav > li .dropdown-menu { 
         margin: 0; 
@@ -55,17 +39,6 @@
 <body>
  <div class="container">
   <div class="body" style="padding-top: 18%">
-    <div class="row" style="padding-left: 28%;padding-top: 50px;">
-      <div style="margin-top: 25px;">
-        <hr style="width: 70px;border: 1px solid gray;">
-      </div>
-      <div class="alert alert-light" style="text-align: center;font-size: 32px;color: black;margin-bottom: 0px;padding-bottom: 15px;">
-        <strong> 关于我们/ABOUT US</strong>
-      </div>
-      <div style="margin-top: 25px;">
-        <hr style="width: 70px;border: 1px solid gray;">
-      </div>
-    </div>
 
     <div style="padding-top: 3%;">
       <div class="title" style="/*border: 1px solid #03AF7A;*/background
@@ -124,12 +97,6 @@
     <div class="row">
       <div style="padding-left: 180px;">
         <img src="images/about/gzh20190804.jpg" class="img-thumbnail" alt="Cinque Terre" style="width: 70%;">
-      </div>
-
-      <div style="padding-left: 30%;padding-top: 30px;color: white;text-align: center;font-size: 16px;">
-        <p>联系我们</p>
-        <p>Tel：400-111-0611</p>
-        <p>微信公众号：少年行 未来营</p>
       </div>
       <div style="text-align: center;color: white;padding-left: 35%;padding-top: 10px;">
         <a style="font-size: 12px;" href="http://beian.miit.gov.cn/">© 2018 独角兽（深圳）营销管理有限公司 | 粤ICP备19059494号</a>
