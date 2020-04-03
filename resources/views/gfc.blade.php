@@ -38,7 +38,7 @@
 
 <body>
  <div class="container">
-  <div class="body" style = "padding-left: 30%">
+  <div class="body" style = "padding-left: 20%">
     <div style="padding-top: 3%;">
       <div class="title" style="/*border: 1px solid #03AF7A;*/background
     :/*rgba(3,175,122,.2)*/#b0b0b0;height: 50px;width: 100%;padding-left: 0px;padding-top: 16px;font-size: 18px;">
@@ -80,7 +80,7 @@
   </div>
   <div class="tail" style="height: 300px;">
     <div class="row">
-      <div style="text-align: center;color: white;padding-left: 30%;padding-top: 10px;">
+      <div style="text-align: center;color: white;padding-left: 20%;padding-top: 10px;">
         <a style="font-size: 12px;" href="http://beian.miit.gov.cn/">© 2018 独角兽（深圳）营销管理有限公司 | 粤ICP备19059494号</a>
       </div>
     </div>
