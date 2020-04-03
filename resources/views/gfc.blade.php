@@ -38,8 +38,7 @@
 
 <body>
  <div class="container">
-  <div class="body" style="padding-top: 18%">
-
+  <div class="body">
     <div style="padding-top: 3%;">
       <div class="title" style="/*border: 1px solid #03AF7A;*/background
     :/*rgba(3,175,122,.2)*/#b0b0b0;height: 50px;width: 100%;padding-left: 0px;padding-top: 16px;font-size: 18px;">
