@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return "welcome to gfc!";
+    return view('gfc');
 });
 
 Route::post('/getCity', 'PayController@getCity');
