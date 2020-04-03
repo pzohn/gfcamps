@@ -91,13 +91,7 @@
         <hr style="width: 200px;border: 1px solid white;">
       </div>
     </div>
-    <div>
-      <p style="text-align: center;font-size: 10px;color: white;">在您的建议与帮助下，我们将会变得越来越好！</p>
-    </div>
     <div class="row">
-      <div style="padding-left: 180px;">
-        <img src="images/about/gzh20190804.jpg" class="img-thumbnail" alt="Cinque Terre" style="width: 70%;">
-      </div>
       <div style="text-align: center;color: white;padding-left: 35%;padding-top: 10px;">
         <a style="font-size: 12px;" href="http://beian.miit.gov.cn/">© 2018 独角兽（深圳）营销管理有限公司 | 粤ICP备19059494号</a>
       </div>
