@@ -54,12 +54,6 @@
 
 <body>
  <div class="container">
-  <div class="header">
-    <div class="logo" style="text-align: left;padding-left: 25%">
-      <a href="index.html">
-      <img src="images/index/logo1.png" class="rounded" alt="Cinque Terre" style="width: 20%;height: 20%;padding-top: 2%">
-    </div>
-    
   <div class="body" style="padding-top: 18%">
     <div class="row" style="padding-left: 28%;padding-top: 50px;">
       <div style="margin-top: 25px;">
