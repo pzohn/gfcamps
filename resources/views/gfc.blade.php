@@ -78,18 +78,7 @@
 
     </div>
   </div>
-  <div class="tail" style="background:url(images/index/u264.png);height: 300px;">
-    <div class="row" style="padding-left: 23%;padding-top: 10px;">
-      <div>
-        <hr style="width: 200px;border: 1px solid white;">
-      </div>
-      <div style="text-align: center;font-size: 16px;color: white;margin-top: 5px;margin-left: 10px;margin-right: 20px;">
-        <strong>联系我们/CONTACT US</strong>
-      </div>
-      <div>
-        <hr style="width: 200px;border: 1px solid white;">
-      </div>
-    </div>
+  <div class="tail" style="height: 300px;">
     <div class="row">
       <div style="text-align: center;color: white;padding-left: 35%;padding-top: 10px;">
         <a style="font-size: 12px;" href="http://beian.miit.gov.cn/">© 2018 独角兽（深圳）营销管理有限公司 | 粤ICP备19059494号</a>
